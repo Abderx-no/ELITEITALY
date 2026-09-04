@@ -37,6 +37,28 @@ body {
     line-height: 1.6;
     background: var(--light-bg);
 }
+/* =========================
+   3. HERO SECTION (FULL SCREEN + ROME + ARC)
+   ========================= */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* TRUE FULL SCREEN */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 100px 40px 60px; /* Top padding accounts for fixed nav */
+    overflow: hidden;
+    
+    /* Deep Blue Gradient + Rome Colosseum Image */
+    background: 
+        linear-gradient(90deg, #050b18 0%, #0a1628 40%, rgba(10, 22, 40, 0.75) 100%),
+        url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=2560&auto=format&fit=crop') center right / cover no-repeat;
+}
 
 /* Navigation */
 nav {
