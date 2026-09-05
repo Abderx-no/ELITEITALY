@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite IT </title>
+    <title>Elite Italy - Study in Italy's Top Universities</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-graduation-cap"></i> ELITE ITALY 
+                <i class="fas fa-graduation-cap"></i>
+                <span>ELITE <span style="color: var(--accent-blue);">ITALY</span></span>
             </div>
             <div>
                 <button onclick="showSection('home')" class="nav-btn active">Home</button>
@@ -28,31 +29,36 @@
     <!-- Home Section -->
     <div id="home" class="section active">
         <div class="hero">
-            <h1>Study in Italy's Top Universities</h1>
-            <p>Your Complete Guide to Admission, IELTS Prep & Premium Application Services</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="showSection('universities')">Explore Universities</button>
-                <button class="btn btn-secondary" onclick="showSection('services')">Our Services</button>
+            <div class="hero-content">
+                <h1>Study in Italy's Top Universities</h1>
+                <p>Your Complete Guide to Admission, IELTS Prep & Premium Application Services</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="showSection('universities')">Explore Universities →</button>
+                    <button class="btn btn-secondary" onclick="showSection('services')">Our Services →</button>
+                </div>
             </div>
         </div>
 
         <div class="stats-section">
             <div class="container">
-                <h2 style="margin-bottom: 10px;">Why Choose Us?</h2>
                 <div class="stats-grid">
                     <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
                         <h3>500+</h3>
                         <p>Successful Admissions</p>
                     </div>
                     <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
                         <h3>98%</h3>
                         <p>Success Rate</p>
                     </div>
                     <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-university"></i></div>
                         <h3>25+</h3>
                         <p>Partner Universities</p>
                     </div>
                     <div class="stat-box">
+                        <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
                         <h3>15+</h3>
                         <p>Years Experience</p>
                     </div>
@@ -60,24 +66,34 @@
             </div>
         </div>
 
-        <div class="container" style="padding: 80px 20px;">
-            <h2 class="section-title">How It Works</h2>
-            <div class="services-grid">
-                <div class="service-box">
-                    <h3><i class="fas fa-search"></i> Step 1: Consultation</h3>
-                    <p>Free initial assessment of your profile, goals, and eligibility for Italian universities.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-book"></i> Step 2: University Match</h3>
-                    <p>We identify 5-7 universities that match your academic profile and preferences.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-pen-fancy"></i> Step 3: Application</h3>
-                    <p>Our experts handle all documentation, essays, and application submissions.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-trophy"></i> Step 4: Admission</h3>
-                    <p>Get multiple acceptances and choose your ideal university with our guidance.</p>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="how-it-works">
+                    <div class="work-step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon"><i class="fas fa-user-circle"></i></div>
+                        <h3>Step 1: Consultation</h3>
+                        <p>Free initial assessment of your profile, goals, and eligibility for Italian universities.</p>
+                    </div>
+                    <div class="work-step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon"><i class="fas fa-book"></i></div>
+                        <h3>Step 2: University Match</h3>
+                        <p>We identify 5-7 universities that match your academic profile and preferences.</p>
+                    </div>
+                    <div class="work-step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon"><i class="fas fa-pen-fancy"></i></div>
+                        <h3>Step 3: Application</h3>
+                        <p>Our experts handle all documentation, essays, and application submissions.</p>
+                    </div>
+                    <div class="work-step">
+                        <div class="step-number">4</div>
+                        <div class="step-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>Step 4: Admission</h3>
+                        <p>Get multiple acceptances and choose your ideal university with our guidance.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,105 +101,111 @@
 
     <!-- Universities Section -->
     <div id="universities" class="section">
-        <div class="container">
-            <h2 class="section-title">Top Italian Universities</h2>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">Top Italian Universities</h2>
 
-            <div class="filter-section">
-                <div class="filter-group">
-                    <label>Filter by IELTS Requirement:</label>
-                    <select onchange="filterUniversities()">
-                        <option value="all">All Universities</option>
-                        <option value="required">IELTS Required</option>
-                        <option value="not-required">IELTS Not Required</option>
-                    </select>
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label>Filter by IELTS:</label>
+                        <select onchange="filterUniversities()">
+                            <option value="all">All Universities</option>
+                            <option value="required">IELTS Required</option>
+                            <option value="not-required">IELTS Not Required</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Max Tuition:</label>
+                        <input type="number" id="maxTuition" placeholder="€..." onchange="filterUniversities()">
+                    </div>
+                    <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
                 </div>
-                <div class="filter-group">
-                    <label>Max Tuition:</label>
-                    <input type="number" id="maxTuition" placeholder="€..." onchange="filterUniversities()">
-                </div>
-                <button class="btn btn-secondary" onclick="resetFilters()">Reset Filters</button>
-            </div>
 
-            <div class="unis-grid" id="universitiesGrid">
-                <!-- Universities will be populated here -->
+                <div class="unis-grid" id="universitiesGrid">
+                    <!-- Universities will be populated here -->
+                </div>
             </div>
         </div>
     </div>
 
     <!-- IELTS Resources Section -->
     <div id="ielts" class="section">
-        <div class="container">
-            <h2 class="section-title">IELTS Preparation Resources</h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 40px;">
-                Prepare for your IELTS exam with the best platforms and courses available
-            </p>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">IELTS Preparation Resources</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: var(--text-light); margin-bottom: 40px;">
+                    Prepare for your IELTS exam with the best platforms and courses available
+                </p>
 
-            <div class="resources-grid" id="resourcesGrid">
-                <!-- Resources will be populated here -->
-            </div>
+                <div class="resources-grid" id="resourcesGrid">
+                    <!-- Resources will be populated here -->
+                </div>
 
-            <div style="margin-top: 60px; padding: 40px; background: var(--light-bg); border-radius: 10px;">
-                <h3 style="color: var(--primary); margin-bottom: 20px;">IELTS Score Requirements by University</h3>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr style="background: var(--primary); color: white;">
-                        <th style="padding: 15px; text-align: left;">University</th>
-                        <th style="padding: 15px;">Minimum IELTS Score</th>
-                        <th style="padding: 15px;">Degree Level</th>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border-color);">
-                        <td style="padding: 12px;">University of Milan</td>
-                        <td style="padding: 12px; text-align: center;">6.5</td>
-                        <td style="padding: 12px; text-align: center;">Master's</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border-color);">
-                        <td style="padding: 12px;">University of Rome Sapienza</td>
-                        <td style="padding: 12px; text-align: center;">6.0</td>
-                        <td style="padding: 12px; text-align: center;">Bachelor's</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border-color);">
-                        <td style="padding: 12px;">Politecnico di Torino</td>
-                        <td style="padding: 12px; text-align: center;">6.5</td>
-                        <td style="padding: 12px; text-align: center;">Master's</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px;">University of Bologna</td>
-                        <td style="padding: 12px; text-align: center;">5.5</td>
-                        <td style="padding: 12px; text-align: center;">Bachelor's</td>
-                    </tr>
-                </table>
+                <div style="margin-top: 60px; padding: 40px; background: var(--white); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 51, 204, 0.08); border-left: 4px solid var(--secondary-blue);">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 20px; font-weight: 900; font-size: 1.4rem;">IELTS Score Requirements by University</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%); color: var(--white); font-weight: 700;">
+                            <th style="padding: 15px; text-align: left;">University</th>
+                            <th style="padding: 15px;">Minimum IELTS Score</th>
+                            <th style="padding: 15px;">Degree Level</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f0f0f0;">
+                            <td style="padding: 12px;">University of Milan</td>
+                            <td style="padding: 12px; text-align: center; font-weight: 700;">6.5</td>
+                            <td style="padding: 12px; text-align: center;">Master's</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f0f0f0; background: rgba(0, 82, 255, 0.02);">
+                            <td style="padding: 12px;">University of Rome Sapienza</td>
+                            <td style="padding: 12px; text-align: center; font-weight: 700;">6.0</td>
+                            <td style="padding: 12px; text-align: center;">Bachelor's</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f0f0f0;">
+                            <td style="padding: 12px;">Politecnico di Torino</td>
+                            <td style="padding: 12px; text-align: center; font-weight: 700;">6.5</td>
+                            <td style="padding: 12px; text-align: center;">Master's</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #f0f0f0; background: rgba(0, 82, 255, 0.02);">
+                            <td style="padding: 12px;">University of Bologna</td>
+                            <td style="padding: 12px; text-align: center; font-weight: 700;">5.5</td>
+                            <td style="padding: 12px; text-align: center;">Bachelor's</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Services Section -->
     <div id="services" class="section">
-        <div class="container">
-            <h2 class="section-title">Our Premium Services</h2>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">Our Premium Services</h2>
 
-            <div class="services-grid">
-                <div class="service-box">
-                    <h3><i class="fas fa-file-alt"></i> Document Preparation</h3>
-                    <p>Complete assistance with statement of purpose, letters of recommendation, academic transcripts, and all required documents.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-envelope"></i> Application Submission</h3>
-                    <p>We submit applications to multiple universities simultaneously, tracking all deadlines and requirements.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-handshake"></i> University Negotiation</h3>
-                    <p>Negotiate scholarships, tuition waivers, and better admission terms with partner universities.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-plane"></i> Visa Assistance</h3>
-                    <p>Complete guidance on student visa application, accommodation, and relocation to Italy.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-phone"></i> 24/7 Support</h3>
-                    <p>Dedicated support throughout your journey - before, during, and after your admission.</p>
-                </div>
-                <div class="service-box">
-                    <h3><i class="fas fa-chart-line"></i> Career Guidance</h3>
-                    <p>Post-graduation support including internship placement and career counseling.</p>
+                <div class="services-grid">
+                    <div class="service-box">
+                        <h3><i class="fas fa-file-alt"></i> Document Preparation</h3>
+                        <p>Complete assistance with statement of purpose, letters of recommendation, academic transcripts, and all required documents.</p>
+                    </div>
+                    <div class="service-box">
+                        <h3><i class="fas fa-envelope"></i> Application Submission</h3>
+                        <p>We submit applications to multiple universities simultaneously, tracking all deadlines and requirements.</p>
+                    </div>
+                    <div class="service-box">
+                        <h3><i class="fas fa-handshake"></i> University Negotiation</h3>
+                        <p>Negotiate scholarships, tuition waivers, and better admission terms with partner universities.</p>
+                    </div>
+                    <div class="service-box">
+                        <h3><i class="fas fa-plane"></i> Visa Assistance</h3>
+                        <p>Complete guidance on student visa application, accommodation, and relocation to Italy.</p>
+                    </div>
+                    <div class="service-box">
+                        <h3><i class="fas fa-phone"></i> 24/7 Support</h3>
+                        <p>Dedicated support throughout your journey - before, during, and after your admission.</p>
+                    </div>
+                    <div class="service-box">
+                        <h3><i class="fas fa-chart-line"></i> Career Guidance</h3>
+                        <p>Post-graduation support including internship placement and career counseling.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,69 +213,71 @@
 
     <!-- Pricing Section -->
     <div id="pricing" class="section">
-        <div class="container">
-            <h2 class="section-title">Transparent Pricing</h2>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">Transparent Pricing</h2>
 
-            <div class="pricing-cards">
-                <div class="price-card">
-                    <h3>Starter Package</h3>
-                    <p>Perfect for self-motivated students</p>
-                    <div class="price-amount">€499 <small>/one-time</small></div>
-                    <ul class="features-list">
-                        <li>University Selection Consultation</li>
-                        <li>Profile Review & Assessment</li>
-                        <li>Document Checklist</li>
-                        <li>Application Timeline</li>
-                        <li>Email Support</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="contactForPackage('Starter')">Get Started</button>
+                <div class="pricing-cards">
+                    <div class="price-card">
+                        <h3>Starter Package</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Perfect for self-motivated students</p>
+                        <div class="price-amount">€499 <small>/one-time</small></div>
+                        <ul class="features-list">
+                            <li>University Selection Consultation</li>
+                            <li>Profile Review & Assessment</li>
+                            <li>Document Checklist</li>
+                            <li>Application Timeline</li>
+                            <li>Email Support</li>
+                        </ul>
+                        <button class="btn btn-secondary" onclick="contactForPackage('Starter')" style="width: 100%; margin-top: 20px;">Get Started</button>
+                    </div>
+
+                    <div class="price-card featured">
+                        <div class="badge">Most Popular</div>
+                        <h3>Complete Package</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Full end-to-end assistance</p>
+                        <div class="price-amount">€1,299 <small>/all-inclusive</small></div>
+                        <ul class="features-list">
+                            <li>Applications to 5-7 Universities</li>
+                            <li>Complete Document Preparation</li>
+                            <li>All Application Submissions</li>
+                            <li>Essay & SOP Writing</li>
+                            <li>Interview Preparation</li>
+                            <li>Scholarship Negotiation</li>
+                            <li>24/7 Phone & Email Support</li>
+                            <li>Visa Assistance</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="contactForPackage('Complete')" style="width: 100%; margin-top: 20px;">Enroll Now</button>
+                    </div>
+
+                    <div class="price-card">
+                        <h3>Premium Plus</h3>
+                        <p style="color: var(--text-light); margin-bottom: 20px;">Personalized elite service</p>
+                        <div class="price-amount">€1,999 <small>/all-inclusive</small></div>
+                        <ul class="features-list">
+                            <li>Everything in Complete Package</li>
+                            <li>Applications to 8-10 Universities</li>
+                            <li>Scholarship Guarantee Consultation</li>
+                            <li>Personal Advisor (Direct Access)</li>
+                            <li>LinkedIn Profile Optimization</li>
+                            <li>Career Placement Support</li>
+                            <li>Post-Admission Relocation Help</li>
+                            <li>3-Month Free Tutoring</li>
+                        </ul>
+                        <button class="btn btn-secondary" onclick="contactForPackage('Premium Plus')" style="width: 100%; margin-top: 20px;">Get Elite Service</button>
+                    </div>
                 </div>
 
-                <div class="price-card featured">
-                    <div class="badge">Most Popular</div>
-                    <h3>Complete Package</h3>
-                    <p>Full end-to-end assistance</p>
-                    <div class="price-amount">€1,299 <small>/all-inclusive</small></div>
-                    <ul class="features-list">
-                        <li>Applications to 5-7 Universities</li>
-                        <li>Complete Document Preparation</li>
-                        <li>All Application Submissions</li>
-                        <li>Essay & SOP Writing</li>
-                        <li>Interview Preparation</li>
-                        <li>Scholarship Negotiation</li>
-                        <li>24/7 Phone & Email Support</li>
-                        <li>Visa Assistance</li>
-                    </ul>
-                    <button class="btn btn-primary" onclick="contactForPackage('Complete')">Enroll Now</button>
-                </div>
-
-                <div class="price-card">
-                    <h3>Premium Plus</h3>
-                    <p>Personalized elite service</p>
-                    <div class="price-amount">€1,999 <small>/all-inclusive</small></div>
-                    <ul class="features-list">
-                        <li>Everything in Complete Package</li>
-                        <li>Applications to 8-10 Universities</li>
-                        <li>Scholarship Guarantee Consultation</li>
-                        <li>Personal Advisor (Direct Access)</li>
-                        <li>LinkedIn Profile Optimization</li>
-                        <li>Career Placement Support</li>
-                        <li>Post-Admission Relocation Help</li>
-                        <li>3-Month Free Tutoring</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="contactForPackage('Premium Plus')">Get Elite Service</button>
-                </div>
-            </div>
-
-            <div style="margin-top: 60px; text-align: center; padding: 40px; background: var(--light-bg); border-radius: 10px;">
-                <h3 style="color: var(--primary); margin-bottom: 15px;">Additional Services (À La Carte)</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
-                    <div><strong>IELTS Coaching:</strong> €50/hour</div>
-                    <div><strong>Essay Editing:</strong> €200 per essay</div>
-                    <div><strong>Interview Prep:</strong> €150/session</div>
-                    <div><strong>Visa Assistance:</strong> €300</div>
-                    <div><strong>Accommodation Help:</strong> €200</div>
-                    <div><strong>Italian Language Course:</strong> €400</div>
+                <div style="margin-top: 60px; text-align: center; padding: 40px; background: var(--white); border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 51, 204, 0.08); border-left: 4px solid var(--secondary-blue);">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-weight: 900; font-size: 1.3rem;">Additional Services (À La Carte)</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+                        <div><strong style="color: var(--secondary-blue);">IELTS Coaching:</strong> €50/hour</div>
+                        <div><strong style="color: var(--secondary-blue);">Essay Editing:</strong> €200 per essay</div>
+                        <div><strong style="color: var(--secondary-blue);">Interview Prep:</strong> €150/session</div>
+                        <div><strong style="color: var(--secondary-blue);">Visa Assistance:</strong> €300</div>
+                        <div><strong style="color: var(--secondary-blue);">Accommodation Help:</strong> €200</div>
+                        <div><strong style="color: var(--secondary-blue);">Italian Language Course:</strong> €400</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -261,80 +285,78 @@
 
     <!-- Contact Section -->
     <div id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get in Touch</h2>
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">Get in Touch</h2>
 
-            <div class="form-container">
-                <div class="success-message" id="successMessage">
-                    <strong>Thank you!</strong> We've received your inquiry. Our team will contact you within 24 hours.
-                </div>
-
-                <form onsubmit="submitForm(event)">
-                    <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" name="name" required>
+                <div class="form-container">
+                    <div class="success-message" id="successMessage">
+                        <strong>✓ Thank you!</strong> We've received your inquiry. Our team will contact you within 24 hours.
                     </div>
 
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" name="phone">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Academic Level *</label>
-                        <select name="level" required>
-                            <option value="">Select...</option>
-                            <option value="bachelor">Bachelor's Degree</option>
-                            <option value="master">Master's Degree</option>
-                            <option value="phd">PhD</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Interested Package *</label>
-                        <select name="package" required>
-                            <option value="">Select...</option>
-                            <option value="starter">Starter Package</option>
-                            <option value="complete">Complete Package</option>
-                            <option value="premium">Premium Plus</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Tell us about yourself *</label>
-                        <textarea name="message" required placeholder="Your background, goals, and why you want to study in Italy..."></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Application</button>
-                </form>
-
-                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-color);">
-                    <h3 style="color: var(--primary); margin-bottom: 20px;">Other Ways to Reach Us</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <div>
-                            <strong><i class="fas fa-envelope"></i> Email</strong><br>
-                            info@studyinitaly.eu<br>
-                            admissions@studyinitaly.eu
+                    <form onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" required>
                         </div>
-                        <div>
-                            <strong><i class="fas fa-phone"></i> Phone</strong><br>
-                            +39 02 1234 5678<br>
-                            +39 06 9876 5432
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
                         </div>
-                        <div>
-                            <strong><i class="fas fa-map-marker-alt"></i> Office</strong><br>
-                            Milan & Rome, Italy<br>
-                            Available Worldwide
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone">
                         </div>
-                        <div>
-                            <strong><i class="fas fa-clock"></i> Hours</strong><br>
-                            Mon-Fri: 9 AM - 6 PM CET<br>
-                            Sat: 10 AM - 4 PM CET
+
+                        <div class="form-group">
+                            <label>Academic Level *</label>
+                            <select name="level" required>
+                                <option value="">Select...</option>
+                                <option value="bachelor">Bachelor's Degree</option>
+                                <option value="master">Master's Degree</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Interested Package *</label>
+                            <select name="package" required>
+                                <option value="">Select...</option>
+                                <option value="starter">Starter Package</option>
+                                <option value="complete">Complete Package</option>
+                                <option value="premium">Premium Plus</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tell us about yourself *</label>
+                            <textarea name="message" required placeholder="Your background, goals, and why you want to study in Italy..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </form>
+
+                    <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid #f0f0f0;">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 20px; font-weight: 900; font-size: 1.3rem;">Other Ways to Reach Us</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                            <div>
+                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-envelope"></i> Email</strong><br>
+                                <p style="margin-top: 8px; color: var(--text-light);">info@eliteItaly.eu<br>admissions@eliteItaly.eu</p>
+                            </div>
+                            <div>
+                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-phone"></i> Phone</strong><br>
+                                <p style="margin-top: 8px; color: var(--text-light);">+39 02 1234 5678<br>+39 06 9876 5432</p>
+                            </div>
+                            <div>
+                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-map-marker-alt"></i> Office</strong><br>
+                                <p style="margin-top: 8px; color: var(--text-light);">Milan & Rome, Italy<br>Available Worldwide</p>
+                            </div>
+                            <div>
+                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-clock"></i> Hours</strong><br>
+                                <p style="margin-top: 8px; color: var(--text-light);">Mon-Fri: 9 AM - 6 PM CET<br>Sat: 10 AM - 4 PM CET</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -346,8 +368,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-col">
-                <h4>About Us</h4>
-                <p style="color: #bdc3c7;">Leading education consultant for Italy's top universities. 15+ years of expertise.</p>
+                <h4>About Elite Italy</h4>
+                <p>Leading education consultant for Italy's top universities. 15+ years of expertise helping international students achieve their dreams.</p>
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
@@ -371,10 +393,11 @@
                 <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
             </div>
         </div>
-        <div style="border-top: 1px solid #444; padding-top: 20px; color: #bdc3c7;">
-            <p>&copy; 2024 StudyInItaly.eu - All Rights Reserved | <a href="#" style="color: var(--secondary);">Privacy Policy</a> | <a href="#" style="color: var(--secondary);">Terms of Service</a></p>
+        <div class="divider">
+            <p>&copy; 2024 Elite Italy - All Rights Reserved | <a href="#" style="color: var(--accent-blue); text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: var(--accent-blue); text-decoration: none;">Terms of Service</a></p>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+        <script src="script.js"></script>
 </body>
 </html>
