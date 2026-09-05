@@ -1,6 +1,7 @@
 // University Data
 const universities = [
-{
+
+    {
         name: "University of Milan",
         city: "Milan",
         opens: "22 January 2027",
@@ -8,10 +9,18 @@ const universities = [
         ielts: true,
         minScore: "6.0",
         applicationFee: "€50",
-        programs: "Engineering, Business, Medicine"
+        programs: "Engineering, Business, Medicine",
+        majors: [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Data Science",
+            "Business Administration",
+            "International Relations",
+            "Engineering"
+        ]
     },
 
-{
+    {
         name: "Sapienza University of Rome",
         city: "Rome",
         opens: "22 December 2026",
@@ -19,10 +28,20 @@ const universities = [
         ielts: true,
         minScore: "6.0",
         applicationFee: "€30",
-        programs: "Law, Humanities, Sciences"
+        programs: "Law, Humanities, Sciences",
+        majors: [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Medicine and Surgery",
+            "Law",
+            "Economics",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Architecture"
+        ]
     },
 
-{
+    {
         name: "Politecnico di Torino",
         city: "Turin",
         opens: "19 December 2026",
@@ -30,10 +49,19 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "€50",
-        programs: "Engineering, Architecture, Technology"
+        programs: "Engineering, Architecture, Technology",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Automotive Engineering",
+            "Electronic Engineering",
+            "Civil Engineering",
+            "Architecture",
+            "Data Science"
+        ]
     },
 
-{
+    {
         name: "University of Bologna",
         city: "Bologna",
         opens: "8 October 2026",
@@ -41,10 +69,20 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "Depends on program",
-        programs: "Business, Languages, Social Sciences, Engineering"
+        programs: "Business, Languages, Social Sciences, Engineering",
+        majors: [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Economics",
+            "Business Administration",
+            "Mechanical Engineering",
+            "Automation Engineering",
+            "International Relations",
+            "Languages and Literature"
+        ]
     },
 
-{
+    {
         name: "University of Padua",
         city: "Padua",
         opens: "15 September 2026",
@@ -52,10 +90,20 @@ const universities = [
         ielts: true,
         minScore: "6.0",
         applicationFee: "€60",
-        programs: "Medicine, Biology, Chemistry, Engineering"
+        programs: "Medicine, Biology, Chemistry, Engineering",
+        majors: [
+            "Computer Science",
+            "Medicine and Surgery",
+            "Biomedical Engineering",
+            "Mechanical Engineering",
+            "Psychology",
+            "Biology",
+            "Chemistry",
+            "Economics"
+        ]
     },
 
-{
+    {
         name: "Bocconi University",
         city: "Milan",
         opens: "2 to 29 September 2026",
@@ -63,10 +111,19 @@ const universities = [
         ielts: true,
         minScore: "6.5",
         applicationFee: "€50",
-        programs: "Business, Economics, Finance"
+        programs: "Business, Economics, Finance",
+        majors: [
+            "International Economics and Management",
+            "Economics and Finance",
+            "Business Administration",
+            "Finance",
+            "Data Science",
+            "Artificial Intelligence",
+            "International Management"
+        ]
     },
 
-{
+    {
         name: "University of Palermo",
         city: "Palermo",
         opens: "Check official call",
@@ -74,10 +131,20 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "Free",
-        programs: "Business, Law, Political Science, Engineering"
+        programs: "Business, Law, Political Science, Engineering",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Electrical Engineering",
+            "Civil Engineering",
+            "Business Administration",
+            "Economics",
+            "Political Science",
+            "Architecture"
+        ]
     },
-{
 
+    {
         name: "University of Florence",
         city: "Florence",
         opens: "10 December 2026",
@@ -85,10 +152,20 @@ const universities = [
         ielts: true,
         minScore: "N/A",
         applicationFee: "€20",
-        programs: "Arts, Literature, History, Engineering"
+        programs: "Arts, Literature, History, Engineering",
+        majors: [
+            "Computer Science",
+            "Mechanical Engineering",
+            "Architecture",
+            "Economics",
+            "Medicine",
+            "Psychology",
+            "Arts and Humanities",
+            "History"
+        ]
     },
 
-{
+    {
         name: "University of Messina",
         city: "Messina",
         opens: "24 November 2026",
@@ -96,10 +173,20 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "€30",
-        programs: "Various programs"
+        programs: "Various programs",
+        majors: [
+            "Computer Science",
+            "Data Science",
+            "Engineering",
+            "Medicine and Surgery",
+            "Economics",
+            "Business Administration",
+            "Political Science",
+            "Psychology"
+        ]
     },
 
-{
+    {
         name: "University of Naples Federico II",
         city: "Naples",
         opens: "Early March",
@@ -107,10 +194,20 @@ const universities = [
         ielts: false,
         minScore: "N/A",
         applicationFee: "Free",
-        programs: "Arts, Literature, History, Engineering"
+        programs: "Arts, Literature, History, Engineering",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Aerospace Engineering",
+            "Transportation Engineering",
+            "Civil Engineering",
+            "Medicine and Surgery",
+            "Architecture",
+            "Economics"
+        ]
     },
 
-{
+    {
         name: "University of Naples Parthenope",
         city: "Naples",
         opens: "Early February",
@@ -118,10 +215,20 @@ const universities = [
         ielts: false,
         minScore: "N/A",
         applicationFee: "Free",
-        programs: "Arts, Engineering, Economics"
+        programs: "Arts, Engineering, Economics",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Economics",
+            "Business Administration",
+            "Maritime Studies",
+            "Tourism Management",
+            "Data Science"
+        ]
     },
 
-{
+    {
         name: "University of Genoa",
         city: "Genoa",
         opens: "26 November 2026",
@@ -129,10 +236,20 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "€30",
-        programs: "Arts, Engineering, Sciences"
+        programs: "Arts, Engineering, Sciences",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Robotics Engineering",
+            "Naval Engineering",
+            "Electrical Engineering",
+            "Architecture",
+            "Economics",
+            "Computer Science"
+        ]
     },
 
-{
+    {
         name: "Polytechnic University of Marche",
         city: "Ancona",
         opens: "16 December 2026",
@@ -140,10 +257,19 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "€10",
-        programs: "Engineering, Sciences, Economics"
+        programs: "Engineering, Sciences, Economics",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Biomedical Engineering",
+            "Civil Engineering",
+            "Environmental Engineering",
+            "Economics",
+            "Business Administration"
+        ]
     },
 
-{
+    {
         name: "University of Pisa",
         city: "Pisa",
         opens: "8 July",
@@ -151,10 +277,20 @@ const universities = [
         ielts: true,
         minScore: "N/A",
         applicationFee: "Depends on program",
-        programs: "Arts, Literature, History, Engineering"
+        programs: "Arts, Literature, History, Engineering",
+        majors: [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Engineering",
+            "Physics",
+            "Medicine",
+            "Economics",
+            "Mathematics",
+            "Data Science"
+        ]
     },
 
-{
+    {
         name: "University of Udine",
         city: "Udine",
         opens: "15 February 2027",
@@ -162,10 +298,19 @@ const universities = [
         ielts: true,
         minScore: "5.5",
         applicationFee: "€20",
-        programs: "Engineering, Biology, Sciences"
+        programs: "Engineering, Biology, Sciences",
+        majors: [
+            "Computer Science",
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Electrical Engineering",
+            "Economics",
+            "Agricultural Sciences",
+            "Biology"
+        ]
     },
 
-{
+    {
         name: "University of Parma",
         city: "Parma",
         opens: "15 April 2027",
@@ -173,10 +318,19 @@ const universities = [
         ielts: true,
         minScore: "6.0",
         applicationFee: "Free",
-        programs: "Arts, Engineering, Biology"
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Mechanical Engineering",
+            "Food Science",
+            "Medicine and Surgery",
+            "Economics",
+            "Biotechnology",
+            "Pharmaceutical Sciences"
+        ]
     },
 
-{
+    {
         name: "University of Trieste",
         city: "Trieste",
         opens: "15 December",
@@ -184,10 +338,20 @@ const universities = [
         ielts: false,
         minScore: "N/A",
         applicationFee: "€40",
-        programs: "Arts, Engineering, Biology"
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Data Science",
+            "Engineering",
+            "Physics",
+            "Economics",
+            "International Relations",
+            "Medicine",
+            "Psychology"
+        ]
     },
 
-{
+    {
         name: "University of Teramo",
         city: "Teramo",
         opens: "No fixed deadline",
@@ -195,9 +359,19 @@ const universities = [
         ielts: false,
         minScore: "N/A",
         applicationFee: "Free",
-        programs: "Arts, Engineering, Biology"
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Veterinary Medicine",
+            "Food Science",
+            "Economics",
+            "Business Administration",
+            "Political Science",
+            "Law",
+            "Biotechnology"
+        ]
     },
-{
+
+    {
         name: "University of Catania",
         city: "Catania",
         opens: "10 February 2027",
@@ -205,10 +379,20 @@ const universities = [
         ielts: true,
         minScore: "N/A",
         applicationFee: "€10",
-        programs: "Arts, Engineering, Biology"
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Medicine and Surgery",
+            "Economics",
+            "Physics",
+            "Biology",
+            "Architecture"
+        ]
     },
 
-{
+    {
         name: "University of Cassino",
         city: "Cassino",
         opens: "Check official call",
@@ -216,69 +400,141 @@ const universities = [
         ielts: false,
         minScore: "N/A",
         applicationFee: "€15",
-        programs: "Arts, Engineering, Biology"
-    } ,
-{
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Electrical Engineering",
+            "Economics",
+            "Business Administration",
+            "International Relations"
+        ]
+    },
+
+    {
         name: "University of Bergamo",
-        city: "bergamo",
+        city: "Bergamo",
         opens: "24 November 2026",
-        closes: "15 January  2027",
+        closes: "15 January 2027",
         ielts: true,
         minScore: "5.5",
-        applicationFee: "€30" ,
-        programs: "Arts, Engineering, Biology"
-    } ,
-{
-        name: "University of L'Aquila ",
+        applicationFee: "€30",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Economics",
+            "Business Administration",
+            "International Management",
+            "Computer Science",
+            "Psychology"
+        ]
+    },
+
+    {
+        name: "University of L'Aquila",
         city: "L'Aquila",
         opens: "25 November 2026",
-        closes: " 31 Marche 2027",
+        closes: "31 March 2027",
         ielts: true,
         minScore: "5.5",
-        applicationFee: "€20" ,
-        programs: "Arts, Engineering, Biology"
+        applicationFee: "€20",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Electrical Engineering",
+            "Civil Engineering",
+            "Mathematics",
+            "Physics"
+        ]
     },
- {
-        name: "University of Basilicata ",
-        city: "Basilicata",
-        opens: " 03 April 2026",
+
+    {
+        name: "University of Basilicata",
+        city: "Potenza",
+        opens: "3 April 2026",
+        closes: "Check official deadline",
         ielts: false,
         minScore: "N/A",
-        applicationFee:"Free" ,
-        programs: "Arts, Engineering, Biology"
+        applicationFee: "Free",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Civil Engineering",
+            "Environmental Engineering",
+            "Agricultural Sciences",
+            "Architecture",
+            "Economics"
+        ]
     },
- {
+
+    {
         name: "University of Calabria",
-        city: "Calabria",
-        opens: "01 Fabruary 2026",
-        closes: " 15 May 2027",
+        city: "Rende",
+        opens: "1 February 2026",
+        closes: "15 May 2027",
         ielts: false,
         minScore: "N/A",
-        applicationFee: "€10" ,
-        programs: "Arts, Engineering, Biology"
+        applicationFee: "€10",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Artificial Intelligence",
+            "Computer Engineering",
+            "Mechanical Engineering",
+            "Telecommunications Engineering",
+            "Economics",
+            "Data Science"
+        ]
     },
- {
+
+    {
         name: "University of Tuscia",
-        city: "Tuscia",
+        city: "Viterbo",
         opens: "Early",
-        closes: " 18 April 2027",
+        closes: "18 April 2027",
         ielts: false,
         minScore: "N/A",
-        applicationFee: "free" ,
-        programs: "Arts, Engineering, Biology"
+        applicationFee: "Free",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Science",
+            "Environmental Sciences",
+            "Agricultural Sciences",
+            "Biotechnology",
+            "Economics",
+            "International Relations",
+            "Cultural Heritage"
+        ]
     },
-{
+
+    {
         name: "University of Modena and Reggio Emilia",
-        city: "Modena ",
+        city: "Modena",
         opens: "10 February 2026",
-        closes: " 30 April  2027",
+        closes: "30 April 2027",
         ielts: true,
         minScore: "5.5",
-        applicationFee: "€20" ,
-        programs: "Arts, Engineering, Biology"
+        applicationFee: "€20",
+        programs: "Arts, Engineering, Biology",
+        majors: [
+            "Computer Engineering",
+            "Artificial Intelligence",
+            "Mechanical Engineering",
+            "Automotive Engineering",
+            "Electrical Engineering",
+            "Medicine",
+            "Economics",
+            "Computer Science"
+        ]
     },
 
 ];
+
+
 // IELTS Resources
 const ieltsResources = [
     {
@@ -355,7 +611,20 @@ function displayUniversities(unis = universities) {
                 ${uni.programs}
             </div>
 
-            <div>
+            <div class="majors-section">
+                <label>📚 Popular Majors:</label>
+
+                <div class="majors-list">
+                    ${uni.majors && uni.majors.length > 0
+                        ? uni.majors.map(major => `
+                            <span class="major-tag">${major}</span>
+                        `).join("")
+                        : "<span>No majors available</span>"
+                    }
+                </div>
+            </div>
+
+            <div style="margin-top: 15px;">
                 ${uni.ielts ? `
                     <span class="badge badge-ielts-yes">
                         IELTS Required (${uni.minScore})
@@ -378,7 +647,6 @@ function displayUniversities(unis = universities) {
         </div>
     `).join("");
 }
-
 // Display IELTS Resources
 function displayResources() {
     const grid = document.getElementById("resourcesGrid");
