@@ -1281,3 +1281,31 @@ footer .divider {
         padding: 25px 20px;
     }
 }
+
+/*majors-section*/
+.majors-section {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.majors-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.majors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.major-tag {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 15px;
+    background: #e8efff;
+    color: #0033cc;
+    font-size: 13px;
+}
