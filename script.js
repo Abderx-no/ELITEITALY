@@ -541,31 +541,31 @@ const ieltsResources = [
         name: "IELTS Advantage",
         icon: "fas fa-book",
         description: "Comprehensive online course with video lessons, practice tests, and expert feedback.",
-        link: "www.ieltsadvantage.com"
+        link: "https://www.ieltsadvantage.com/"
     },
     {
         name: "British Council IELTS",
         icon: "fas fa-graduation-cap",
         description: "Official IELTS preparation materials and practice tests from the British Council.",
-        link: "www.britishcouncil.org/ielts"
+        link: "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test"
     },
     {
         name: "IELTS Buddy",
         icon: "fas fa-users",
         description: "Free IELTS preparation resources, tips, and community support.",
-        link: "www.ieltsfriend.com"
+        link: "https://www.ieltsadvantage.com/2023/02/19/ielts-speaking-questions/"
     },
     {
         name: "E2Language",
         icon: "fas fa-laptop",
         description: "Interactive online courses with live lessons and personalized feedback.",
-        link: "www.e2language.com"
+        link: "https://ieltsonlinetests.com/"
     },
     {
         name: "IELTS Liz",
         icon: "fas fa-star",
         description: "Expert YouTube channel with free tutorials and speaking practice.",
-        link: "www.youtube.com/ieltsliz"
+        link: "https://youtube.com/@ieltsadvantage?si=IuCm3pwZTU2fhYA6"
     },
     {
         name: "Udemy IELTS Courses",
