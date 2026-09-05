@@ -553,7 +553,7 @@ const ieltsResources = [
         name: "IELTS Buddy",
         icon: "fas fa-users",
         description: "Free IELTS preparation resources, tips, and community support.",
-        link: "https://www.ieltsadvantage.com/2023/02/19/ielts-speaking-questions/"
+        link: "https://github.com/Abderx-no/ELITEITALY/blob/main/idex02.html"
     },
     {
         name: "E2Language",
