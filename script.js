@@ -647,8 +647,7 @@ function displayUniversities(unis = universities) {
         </div>
     `).join("");
 }
-// Display IELTS Resources
-```js
+
 // Display IELTS Resources
 function displayResources() {
 
