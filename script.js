@@ -678,20 +678,37 @@ function displayResources() {
 // Section Navigation
 function showSection(sectionId) {
 
+    // Hide all sections
     document.querySelectorAll(".section").forEach(section => {
         section.classList.remove("active");
     });
 
-    document.getElementById(sectionId).classList.add("active");
+    // Find the requested section
+    const targetSection = document.getElementById(sectionId);
 
+    if (!targetSection) {
+        console.error("Section not found:", sectionId);
+        return;
+    }
+
+    // Show the requested section
+    targetSection.classList.add("active");
+
+    // Remove active from all navigation buttons
     document.querySelectorAll("nav button").forEach(button => {
         button.classList.remove("active");
     });
 
-    if (typeof event !== "undefined" && event.target) {
-        event.target.classList.add("active");
-    }
+    // Find the button that opens this section
+    document.querySelectorAll("nav button").forEach(button => {
+        const onclickValue = button.getAttribute("onclick");
 
+        if (onclickValue && onclickValue.includes(`showSection('${sectionId}')`)) {
+            button.classList.add("active");
+        }
+    });
+
+    // Load content when needed
     if (sectionId === "universities") {
         displayUniversities();
     }
@@ -700,9 +717,12 @@ function showSection(sectionId) {
         displayResources();
     }
 
-    window.scrollTo(0, 0);
+    // Go to top
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
-
 // Filtering Universities
 function filterUniversities() {
 
