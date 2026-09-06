@@ -664,13 +664,14 @@ function displayResources() {
 
             <p>${resource.description}</p>
 
-            <button
+            <a
+                href="${resource.link}"
                 class="resource-link"
-                type="button"
-                onclick="window.open('${resource.link}', '_blank')"
+                target="_blank"
+                rel="noopener noreferrer"
             >
                 Learn More →
-            </button>
+            </a>
 
         </div>
     `).join("");
