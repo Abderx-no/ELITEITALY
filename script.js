@@ -664,18 +664,17 @@ function displayResources() {
 
             <p>${resource.description}</p>
 
-            <a
-                href="${resource.link}"
-                target="_blank"
+            <button
                 class="resource-link"
+                type="button"
+                onclick="window.open('${resource.link}', '_blank')"
             >
                 Learn More →
-            </a>
+            </button>
 
         </div>
     `).join("");
 }
-
 // Section Navigation
 function showSection(sectionId) {
 
