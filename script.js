@@ -1,4 +1,7 @@
-// IELTS Resources
+// ================================
+// IELTS RESOURCES
+// ================================
+
 const ieltsResources = [
     {
         name: "IELTS Advantage",
@@ -39,7 +42,10 @@ const ieltsResources = [
 ];
 
 
-// Display IELTS Resources
+// ================================
+// DISPLAY IELTS RESOURCES
+// ================================
+
 function displayResources() {
 
     const grid = document.getElementById("resourcesGrid");
@@ -61,8 +67,8 @@ function displayResources() {
             <p>${resource.description}</p>
 
             <button
-                class="resource-link"
                 type="button"
+                class="resource-link"
                 onclick="window.open('${resource.link}', '_blank')"
             >
                 Learn More →
@@ -73,13 +79,19 @@ function displayResources() {
 }
 
 
-// Section Navigation
+// ================================
+// SECTION NAVIGATION
+// ================================
+
 function showSection(sectionId) {
 
     // Hide all sections
-    document.querySelectorAll(".section").forEach(section => {
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach(section => {
         section.classList.remove("active");
     });
+
 
     // Find selected section
     const targetSection = document.getElementById(sectionId);
@@ -89,37 +101,51 @@ function showSection(sectionId) {
         return;
     }
 
+
     // Show selected section
     targetSection.classList.add("active");
 
-    // Remove active from all navigation buttons
-    document.querySelectorAll("nav button").forEach(button => {
+
+    // Remove active from navigation buttons
+    const navButtons = document.querySelectorAll("nav button");
+
+    navButtons.forEach(button => {
         button.classList.remove("active");
     });
 
-    // Add active to selected navigation button
-    document.querySelectorAll("nav button").forEach(button => {
 
-        const onclickValue = button.getAttribute("onclick");
+    // Activate clicked navigation button
+    navButtons.forEach(button => {
+
+        const onclick = button.getAttribute("onclick");
 
         if (
-            onclickValue &&
-            onclickValue.includes(`showSection('${sectionId}')`)
+            onclick &&
+            onclick.includes(`showSection('${sectionId}')`)
         ) {
             button.classList.add("active");
         }
 
     });
 
-    // Load universities
+
+    // Load Universities
     if (sectionId === "universities") {
-        displayUniversities();
+
+        if (typeof displayUniversities === "function") {
+            displayUniversities();
+        } else {
+            console.error("displayUniversities() is missing!");
+        }
+
     }
 
-    // Load IELTS resources
+
+    // Load IELTS
     if (sectionId === "ielts") {
         displayResources();
     }
+
 
     // Scroll to top
     window.scrollTo({
@@ -129,7 +155,10 @@ function showSection(sectionId) {
 }
 
 
-// Filter Universities
+// ================================
+// FILTER UNIVERSITIES
+// ================================
+
 function filterUniversities() {
 
     const filterSelect =
@@ -148,6 +177,7 @@ function filterUniversities() {
     const maxFee =
         parseFloat(maxFeeInput.value) || Infinity;
 
+
     const filtered = universities.filter(uni => {
 
         const ieltsMatch =
@@ -155,18 +185,25 @@ function filterUniversities() {
             (ieltsFilter === "required" && uni.ielts) ||
             (ieltsFilter === "not-required" && !uni.ielts);
 
+
         const feeMatch =
             typeof uni.applicationFee !== "number" ||
             uni.applicationFee <= maxFee;
 
+
         return ieltsMatch && feeMatch;
+
     });
+
 
     displayUniversities(filtered);
 }
 
 
-// Reset Filters
+// ================================
+// RESET FILTERS
+// ================================
+
 function resetFilters() {
 
     const filterSelect =
@@ -175,24 +212,31 @@ function resetFilters() {
     const maxFeeInput =
         document.getElementById("maxFee");
 
+
     if (filterSelect) {
         filterSelect.value = "all";
     }
+
 
     if (maxFeeInput) {
         maxFeeInput.value = "";
     }
 
+
     displayUniversities();
 }
 
 
-// Contact University
+// ================================
+// UNIVERSITY CONTACT
+// ================================
+
 function contactForUniversity(uniName) {
 
     showSection("contact");
 
-    const form = document.querySelector("#contact form");
+    const form =
+        document.querySelector("#contact form");
 
     if (form) {
         form.reset();
@@ -200,25 +244,33 @@ function contactForUniversity(uniName) {
 }
 
 
-// Contact Package
+// ================================
+// PACKAGE CONTACT
+// ================================
+
 function contactForPackage(packageName) {
 
     showSection("contact");
 
+
     const packageSelect =
         document.querySelector('select[name="package"]');
+
 
     if (!packageSelect) {
         return;
     }
 
+
     if (packageName === "Starter") {
         packageSelect.value = "starter";
     }
 
+
     if (packageName === "Complete") {
         packageSelect.value = "complete";
     }
+
 
     if (packageName === "Premium Plus") {
         packageSelect.value = "premium";
@@ -226,32 +278,50 @@ function contactForPackage(packageName) {
 }
 
 
-// Contact Form
+// ================================
+// CONTACT FORM
+// ================================
+
 function submitForm(e) {
 
     e.preventDefault();
 
+
     const successMsg =
         document.getElementById("successMessage");
+
 
     if (!successMsg) {
         return;
     }
 
+
     successMsg.style.display = "block";
+
 
     e.target.reset();
 
+
     setTimeout(() => {
+
         successMsg.style.display = "none";
+
     }, 5000);
 }
 
 
-// Start Website
+// ================================
+// START WEBSITE
+// ================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    displayUniversities();
+    // Load universities
+    if (typeof displayUniversities === "function") {
+        displayUniversities();
+    }
+
+    // Load IELTS resources
     displayResources();
 
 });
