@@ -648,7 +648,10 @@ function displayUniversities(unis = universities) {
     `).join("");
 }
 // Display IELTS Resources
+```js
+// Display IELTS Resources
 function displayResources() {
+
     const grid = document.getElementById("resourcesGrid");
 
     if (!grid) return;
@@ -664,18 +667,19 @@ function displayResources() {
 
             <p>${resource.description}</p>
 
-            <a
-                href="${resource.link}"
+            <button
                 class="resource-link"
-                target="_blank"
-                rel="noopener noreferrer"
+                type="button"
+                onclick="window.open('${resource.link}', '_blank')"
             >
                 Learn More →
-            </a>
+            </button>
 
         </div>
     `).join("");
 }
+```
+
 // Section Navigation
 function showSection(sectionId) {
 
