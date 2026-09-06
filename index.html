@@ -282,85 +282,232 @@
     </div>
 
     <!-- Contact Section -->
-    <div id="contact" class="section">
-        <div class="section-content">
-            <div class="container">
-                <h2 class="section-title">Get in Touch</h2>
+    ```html
+<!-- Contact Section -->
+<div id="contact" class="section">
+    <div class="section-content">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
 
-                <div class="form-container">
-                    <div class="success-message" id="successMessage">
-                        <strong>✓ Thank you!</strong> We've received your inquiry. Our team will contact you within 24 hours.
-                    </div>
+            <div class="form-container">
 
-                    <form onsubmit="submitForm(event)">
-                        <div class="form-group">
-                            <label>Full Name *</label>
-                            <input type="text" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email Address *</label>
-                            <input type="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Academic Level *</label>
-                            <select name="level" required>
-                                <option value="">Select...</option>
-                                <option value="bachelor">Bachelor's Degree</option>
-                                <option value="master">Master's Degree</option>
-                                <option value="phd">PhD</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Interested Package *</label>
-                            <select name="package" required>
-                                <option value="">Select...</option>
-                                <option value="starter">Starter Package</option>
-                                <option value="complete">Complete Package</option>
-                                <option value="premium">Premium Plus</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Tell us about yourself *</label>
-                            <textarea name="message" required placeholder="Your background, goals, and why you want to study in Italy..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
-                    </form>
-
-                    <div style="margin-top: 40px; padding-top: 40px; border-top: 2px solid #f0f0f0;">
-                        <h3 style="color: var(--primary-dark); margin-bottom: 20px; font-weight: 900; font-size: 1.3rem;">Other Ways to Reach Us</h3>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                            <div>
-                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-envelope"></i> Email</strong><br>
-                                <p style="margin-top: 8px; color: var(--text-light);">mekkimekki6088@gmail.com<br>hn.louai@gmail.com</p>
-                            </div>
-                            <div>
-                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-phone"></i> Phone</strong><br>
-                                <p style="margin-top: 8px; color: var(--text-light);">+39 02 1234 5678<br>+39 06 9876 5432</p>
-                            </div>
-                            <div>
-                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-map-marker-alt"></i> Office</strong><br>
-                                <p style="margin-top: 8px; color: var(--text-light);">Bologna & Udine, Italy<br>Available Worldwide</p>
-                            </div>
-                            <div>
-                                <strong style="color: var(--secondary-blue); font-size: 1.1rem;"><i class="fas fa-clock"></i> Hours</strong><br>
-                                <p style="margin-top: 8px; color: var(--text-light);">Mon-Fri: 9 AM - 6 PM CET<br>Sat: 10 AM - 4 PM CET</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="success-message" id="successMessage">
+                    <strong>✓ Thank you!</strong>
+                    We've received your inquiry. Our team will contact you within 24 hours.
                 </div>
+
+                <form onsubmit="submitForm(event)">
+
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Academic Level *</label>
+                        <select name="level" required>
+                            <option value="">Select...</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                            <option value="phd">PhD</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Interested Package *</label>
+                        <select name="package" required>
+                            <option value="">Select...</option>
+                            <option value="starter">Starter Package</option>
+                            <option value="complete">Complete Package</option>
+                            <option value="premium">Premium Plus</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tell us about yourself *</label>
+                        <textarea
+                            name="message"
+                            required
+                            placeholder="Your background, goals, and why you want to study in Italy..."
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        style="width: 100%;"
+                    >
+                        Send Inquiry
+                    </button>
+
+                </form>
+
+
+                <!-- Other Ways to Reach Us -->
+                <div style="
+                    margin-top: 40px;
+                    padding-top: 40px;
+                    border-top: 2px solid #f0f0f0;
+                ">
+
+                    <h3 style="
+                        color: var(--primary-dark);
+                        margin-bottom: 20px;
+                        font-weight: 900;
+                        font-size: 1.3rem;
+                    ">
+                        Other Ways to Reach Us
+                    </h3>
+
+
+                    <div style="
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                        gap: 20px;
+                    ">
+
+
+                        <!-- EMAIL -->
+                        <div>
+
+                            <strong style="
+                                color: var(--secondary-blue);
+                                font-size: 1.1rem;
+                            ">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </strong>
+
+                            <br>
+
+                            <p style="
+                                margin-top: 8px;
+                                color: var(--text-light);
+                                line-height: 1.8;
+                            ">
+
+                                <a
+                                    href="mailto:mekkimekki6088@gmail.com"
+                                    style="
+                                        color: var(--secondary-blue);
+                                        text-decoration: none;
+                                    "
+                                >
+                                    mekkimekki6088@gmail.com
+                                </a>
+
+                                <br>
+
+                                <a
+                                    href="mailto:hn.louai@gmail.com"
+                                    style="
+                                        color: var(--secondary-blue);
+                                        text-decoration: none;
+                                    "
+                                >
+                                    hn.louai@gmail.com
+                                </a>
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+                        <div>
+
+                            <strong style="
+                                color: var(--secondary-blue);
+                                font-size: 1.1rem;
+                            ">
+                                <i class="fas fa-phone"></i>
+                                Phone
+                            </strong>
+
+                            <br>
+
+                            <p style="
+                                margin-top: 8px;
+                                color: var(--text-light);
+                            ">
+                                +39 02 1234 5678
+                                <br>
+                                +39 06 9876 5432
+                            </p>
+
+                        </div>
+
+
+                        <!-- OFFICE -->
+                        <div>
+
+                            <strong style="
+                                color: var(--secondary-blue);
+                                font-size: 1.1rem;
+                            ">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Office
+                            </strong>
+
+                            <br>
+
+                            <p style="
+                                margin-top: 8px;
+                                color: var(--text-light);
+                            ">
+                                Bologna & Udine, Italy
+                                <br>
+                                Available Worldwide
+                            </p>
+
+                        </div>
+
+
+                        <!-- HOURS -->
+                        <div>
+
+                            <strong style="
+                                color: var(--secondary-blue);
+                                font-size: 1.1rem;
+                            ">
+                                <i class="fas fa-clock"></i>
+                                Hours
+                            </strong>
+
+                            <br>
+
+                            <p style="
+                                margin-top: 8px;
+                                color: var(--text-light);
+                            ">
+                                Mon-Fri: 9 AM - 6 PM CET
+                                <br>
+                                Sat: 10 AM - 4 PM CET
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
     </div>
+</div>
+```
+
 
     <!-- Footer -->
     <footer>
