@@ -547,25 +547,25 @@ const ieltsResources = [
         name: "British Council IELTS",
         icon: "fas fa-graduation-cap",
         description: "Official IELTS preparation materials and practice tests from the British Council.",
-        link: "www.britishcouncil.org/ielts"
+        link: "https://ielts.org/take-a-test/preparation-resources/sample-test-questions/academic-test"
     },
     {
         name: "IELTS Buddy",
         icon: "fas fa-users",
         description: "Free IELTS preparation resources, tips, and community support.",
-        link: "www.ieltsfriend.com"
+        link: "https://abderx-no.github.io/IELTS-_Buddy/"
     },
     {
         name: "E2Language",
         icon: "fas fa-laptop",
         description: "Interactive online courses with live lessons and personalized feedback.",
-        link: "www.e2language.com"
+        link: "https://engnovate.com/"
     },
     {
         name: "IELTS Liz",
         icon: "fas fa-star",
         description: "Expert YouTube channel with free tutorials and speaking practice.",
-        link: "www.youtube.com/ieltsliz"
+        link: "https://youtube.com/@dalilk4english?si=AyMrmemAx_cZnhs7"
     },
     {
         name: "Udemy IELTS Courses",
