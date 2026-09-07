@@ -675,9 +675,8 @@ function displayResources() {
         </div>
     `).join("");
 }
-
 // Section Navigation
-function showSection(sectionId) {
+function showSection(sectionId, addToHistory = true) {
 
     // Hide all sections
     document.querySelectorAll(".section").forEach(section => {
@@ -707,13 +706,23 @@ function showSection(sectionId) {
         }
     });
 
-    // Load section content
+    // Load Universities
     if (sectionId === "universities") {
         displayUniversities();
     }
 
+    // Load IELTS Resources
     if (sectionId === "ielts") {
         displayResources();
+    }
+
+    // Add section to browser history
+    if (addToHistory) {
+        history.pushState(
+            { section: sectionId },
+            "",
+            "#" + sectionId
+        );
     }
 
     // Scroll to top
@@ -722,6 +731,27 @@ function showSection(sectionId) {
         behavior: "smooth"
     });
 }
+
+
+// Browser Back and Forward buttons
+window.addEventListener("popstate", function(event) {
+
+    if (event.state && event.state.section) {
+
+        showSection(
+            event.state.section,
+            false
+        );
+
+    } else {
+
+        const sectionId =
+            window.location.hash.replace("#", "") || "home";
+
+        showSection(sectionId, false);
+    }
+
+});
 
 // Filtering Universities
 function filterUniversities() {
