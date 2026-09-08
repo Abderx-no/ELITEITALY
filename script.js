@@ -575,6 +575,223 @@ const ieltsResources = [
     }
 ];
 
+// ===== UNIVERSITY & MAJOR SELECTION FUNCTIONS =====
+
+// Initialize Contact Section with Universities
+function initializeContactSection() {
+    displayCityCheckboxes();
+    displayUniversitiesInContact();
+}
+
+// Get unique cities from universities
+function getUniqueCities() {
+    const cities = [...new Set(universities.map(uni => uni.city))];
+    return cities.sort();
+}
+
+// Display City Checkboxes
+function displayCityCheckboxes() {
+    const citiesContainer = document.getElementById("citiesCheckboxes");
+    
+    if (!citiesContainer) return;
+
+    const cities = getUniqueCities();
+
+    citiesContainer.innerHTML = cities.map((city, index) => `
+        <div style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 4px; cursor: pointer;">
+            <input 
+                type="checkbox" 
+                id="city_${index}" 
+                name="cities" 
+                value="${city}"
+                style="width: 18px; height: 18px; cursor: pointer;"
+                onchange="filterUniversitiesInContact();"
+            >
+            <label for="city_${index}" style="cursor: pointer; margin: 0; flex: 1; font-weight: 500;">
+                ${city}
+            </label>
+        </div>
+    `).join("");
+}
+
+// Display Universities as Checkboxes in Contact Form
+function displayUniversitiesInContact(unis = universities) {
+    const checkboxContainer = document.getElementById("universitiesCheckboxes");
+    
+    if (!checkboxContainer) return;
+
+    checkboxContainer.innerHTML = unis.map((uni, index) => `
+        <div style="
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        " onmouseover="this.style.borderColor='var(--secondary-blue)'; this.style.boxShadow='0 2px 8px rgba(0,82,255,0.1)'" 
+           onmouseout="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+            <div style="display: flex; align-items: start; gap: 10px;">
+                <input 
+                    type="checkbox" 
+                    id="uni_${index}" 
+                    name="universities" 
+                    value="${uni.name}"
+                    style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer;"
+                    onchange="updateSelectedUniversities(); updateAvailableMajors();"
+                >
+                <label for="uni_${index}" style="cursor: pointer; flex: 1;">
+                    <strong style="color: var(--primary-dark); display: block;">${uni.name}</strong>
+                    <small style="color: var(--text-light);">
+                        📍 ${uni.city} | 💳 ${uni.applicationFee}
+                        ${uni.ielts ? ` | IELTS: ${uni.minScore}` : ' | No IELTS Required'}
+                    </small>
+                </label>
+            </div>
+        </div>
+    `).join("");
+}
+
+// Filter Universities in Contact Form
+function filterUniversitiesInContact() {
+    const ieltsFilter = document.getElementById("ieltsFilterContact").value;
+    
+    // Get all selected cities
+    const selectedCities = Array.from(
+        document.querySelectorAll("input[name='cities']:checked")
+    ).map(cb => cb.value);
+
+    const filtered = universities.filter(uni => {
+        const ieltsMatch =
+            ieltsFilter === "all" ||
+            (ieltsFilter === "required" && uni.ielts) ||
+            (ieltsFilter === "not-required" && !uni.ielts);
+
+        // If no cities selected, show all; otherwise show only selected cities
+        const cityMatch =
+            selectedCities.length === 0 ||
+            selectedCities.includes(uni.city);
+
+        return ieltsMatch && cityMatch;
+    });
+
+    displayUniversitiesInContact(filtered);
+}
+
+// Reset City Filters
+function resetCityFilter() {
+    // Uncheck all city checkboxes
+    document.querySelectorAll("input[name='cities']").forEach(cb => {
+        cb.checked = false;
+    });
+    
+    // Display all universities again
+    filterUniversitiesInContact();
+}
+
+// Update Selected Universities Display
+function updateSelectedUniversities() {
+    const checkboxes = document.querySelectorAll("input[name='universities']:checked");
+    const selectedUnisList = document.getElementById("selectedUnisList");
+    const selectedUnisSummary = document.getElementById("selectedUnisSummary");
+    const selectedUnisInput = document.getElementById("selectedUnis");
+
+    const selectedUnis = Array.from(checkboxes).map(cb => cb.value);
+    selectedUnisInput.value = JSON.stringify(selectedUnis);
+
+    if (selectedUnis.length > 0) {
+        selectedUnisSummary.style.display = "block";
+        selectedUnisList.innerHTML = selectedUnis.map(uni => `
+            <span style="
+                background: var(--secondary-blue);
+                color: white;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                display: inline-block;
+            ">
+                ${uni}
+            </span>
+        `).join("");
+    } else {
+        selectedUnisSummary.style.display = "none";
+    }
+}
+
+// Update Available Majors Based on Selected Universities
+function updateAvailableMajors() {
+    const checkboxes = document.querySelectorAll("input[name='universities']:checked");
+    const selectedUnis = Array.from(checkboxes).map(cb => cb.value);
+
+    const majorsCheckboxes = document.getElementById("majorsCheckboxes");
+    const noMajorsMessage = document.getElementById("noMajorsMessage");
+
+    if (selectedUnis.length === 0) {
+        majorsCheckboxes.innerHTML = "";
+        noMajorsMessage.style.display = "block";
+        return;
+    }
+
+    // Get all majors from selected universities
+    const allMajors = new Set();
+    universities.forEach(uni => {
+        if (selectedUnis.includes(uni.name)) {
+            uni.majors.forEach(major => allMajors.add(major));
+        }
+    });
+
+    const sortedMajors = Array.from(allMajors).sort();
+
+    noMajorsMessage.style.display = "none";
+    majorsCheckboxes.innerHTML = sortedMajors.map((major, index) => `
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px; border-radius: 4px; cursor: pointer;">
+            <input 
+                type="checkbox" 
+                id="major_${index}" 
+                name="majors" 
+                value="${major}"
+                style="width: 18px; height: 18px; cursor: pointer;"
+                onchange="updateSelectedMajors();"
+            >
+            <label for="major_${index}" style="cursor: pointer; margin: 0; flex: 1;">
+                ${major}
+            </label>
+        </div>
+    `).join("");
+}
+
+// Update Selected Majors Display
+function updateSelectedMajors() {
+    const checkboxes = document.querySelectorAll("input[name='majors']:checked");
+    const selectedMajorsList = document.getElementById("selectedMajorsList");
+    const selectedMajorsSummary = document.getElementById("selectedMajorsSummary");
+    const selectedMajorsInput = document.getElementById("selectedMajorsInput");
+
+    const selectedMajors = Array.from(checkboxes).map(cb => cb.value);
+    selectedMajorsInput.value = JSON.stringify(selectedMajors);
+
+    if (selectedMajors.length > 0) {
+        selectedMajorsSummary.style.display = "block";
+        selectedMajorsList.innerHTML = selectedMajors.map(major => `
+            <span style="
+                background: #4CAF50;
+                color: white;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                font-weight: 600;
+                display: inline-block;
+            ">
+                ${major}
+            </span>
+        `).join("");
+    } else {
+        selectedMajorsSummary.style.display = "none";
+    }
+}
+
+// ===== END NEW FUNCTIONS =====
+
 // Display Universities
 function displayUniversities(unis = universities) {
 
@@ -716,6 +933,13 @@ function showSection(sectionId, addToHistory = true) {
         displayResources();
     }
 
+    // Initialize Contact Section with Universities
+    if (sectionId === "contact") {
+        setTimeout(() => {
+            initializeContactSection();
+        }, 100);
+    }
+
     // Add section to browser history
     if (addToHistory) {
         history.pushState(
@@ -793,12 +1017,22 @@ function resetFilters() {
     displayUniversities();
 }
 
-// Contact University
+// Contact University - ENHANCED
 function contactForUniversity(uniName) {
 
     showSection("contact");
 
     document.querySelector("form").reset();
+    
+    // Pre-select the university if available
+    setTimeout(() => {
+        const checkbox = Array.from(document.querySelectorAll("input[name='universities']")).find(cb => cb.value === uniName);
+        if (checkbox) {
+            checkbox.checked = true;
+            updateSelectedUniversities();
+            updateAvailableMajors();
+        }
+    }, 150);
 }
 
 // Contact Package
@@ -820,24 +1054,58 @@ function contactForPackage(packageName) {
     if (packageName === "Premium Plus") {
         packageSelect.value = "premium";
     }
+
+    setTimeout(() => {
+        initializeContactSection();
+    }, 100);
 }
 
-// Form Submission
+// Form Submission - ENHANCED
 function submitForm(e) {
 
     e.preventDefault();
 
-    const successMsg =
-        document.getElementById("successMessage");
+    // Validate at least one university is selected
+    const selectedUnis = document.querySelector("input[name='universities']:checked");
+    
+    if (!selectedUnis) {
+        alert("Please select at least one university to apply to.");
+        return;
+    }
 
+    // Get form data
+    const selectedUniversities = Array.from(
+        document.querySelectorAll("input[name='universities']:checked")
+    ).map(cb => cb.value);
+
+    const selectedMajors = Array.from(
+        document.querySelectorAll("input[name='majors']:checked")
+    ).map(cb => cb.value);
+
+    console.log("Form Submission Data:", {
+        name: document.querySelector("input[name='name']").value,
+        email: document.querySelector("input[name='email']").value,
+        universities: selectedUniversities,
+        majors: selectedMajors,
+        level: document.querySelector("select[name='level']").value,
+        package: document.querySelector("select[name='package']").value
+    });
+
+    // Show success message
+    const successMsg = document.getElementById("successMessage");
     successMsg.style.display = "block";
 
     e.target.reset();
 
+    // Reset checkboxes visual state
+    document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+    document.getElementById("selectedUnisSummary").style.display = "none";
+    document.getElementById("selectedMajorsSummary").style.display = "none";
+    document.getElementById("noMajorsMessage").style.display = "block";
+    document.getElementById("majorsCheckboxes").innerHTML = "";
+
     setTimeout(() => {
-
         successMsg.style.display = "none";
-
     }, 5000);
 }
 
