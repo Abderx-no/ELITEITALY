@@ -1112,6 +1112,7 @@ function submitForm(e) {
 // Initialize
 displayUniversities();
 displayResources();
+
 // Load the correct section on page refresh
 window.addEventListener("DOMContentLoaded", function() {
     const sectionId = window.location.hash.replace("#", "") || "home";
