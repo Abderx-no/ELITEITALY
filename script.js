@@ -204,7 +204,7 @@ const admissions = [
         university: "Università degli Studi di Messina",
         program: "Bachelor's Degree Course in Business Management",
         degree: "bachelor",
-        letterImage: "messina.jpg",
+        letterImage: "messina.png.jpg",
         testimonial: "Successfully admitted to Messina University for Business Management studies.",
         date: "2026",
         score: "IELTS Required"
