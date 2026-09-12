@@ -287,7 +287,7 @@ function displayAdmissions(admissionsToShow = admissions) {
                 >
 
                 <div class="admission-badge">
-                    ${admission.degree === "masters" ? "Master's" : "Bachelor's"}
+                    ${admission.degree === "masters" ? "Master's" : "Admission Letter"}
                 </div>
 
                 <div class="image-click-hint">
