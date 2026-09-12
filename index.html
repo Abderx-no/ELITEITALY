@@ -8,6 +8,43 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" type="image/png" href="B9q_06_bGvrmyTCNYlNKFaB91n15wKVTFQrIH1b4wH0.png">
 </head><body>
+    <!-- IMAGE MODAL -->
+<div id="imageModal" class="image-modal">
+    <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+
+    <div class="modal-image-wrapper" id="modalImageWrapper">
+        <img id="modalImage" class="modal-image" src="" alt="Admission Letter">
+    </div>
+
+    <div id="modalCaption" class="modal-caption"></div>
+
+    <div class="zoom-controls">
+        <button onclick="zoomOut()">−</button>
+        <button onclick="resetZoom()">⟳</button>
+        <button onclick="zoomIn()">+</button>
+    </div>
+</div>
+    <!-- ===== FULL SCREEN ADMISSION IMAGE MODAL ===== -->
+
+<div id="imageModal" class="image-modal">
+
+    <span 
+        class="image-modal-close"
+        onclick="closeImageModal()"
+    >
+        &times;
+    </span>
+
+    <img 
+        id="modalImage"
+        class="modal-image"
+        src=""
+        alt="Full Admission Letter"
+    >
+
+    <div id="modalCaption" class="modal-caption"></div>
+
+</div>
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
@@ -18,6 +55,7 @@
             <div>
                 <button onclick="showSection('home')" class="nav-btn active">Home</button>
                 <button onclick="showSection('universities')" class="nav-btn">Universities</button>
+                <button onclick="showSection('admissions')" class="nav-btn">Admissions</button>
                 <button onclick="showSection('ielts')" class="nav-btn">IELTS Prep</button>
                 <button onclick="showSection('services')" class="nav-btn">Services</button>
                 <button onclick="showSection('pricing')" class="nav-btn">Pricing</button>
@@ -34,7 +72,7 @@
                 <p>Your Complete Guide to Admission, IELTS Prep & Premium Application Services</p>
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="showSection('universities')">Explore Universities →</button>
-                    <button class="btn btn-secondary" onclick="showSection('services')">Our Services →</button>
+                    <button class="btn btn-secondary" onclick="showSection('admissions')">Success Stories →</button>
                 </div>
             </div>
         </div>
@@ -123,6 +161,34 @@
 
                 <div class="unis-grid" id="universitiesGrid">
                     <!-- Universities will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admissions Section -->
+    <div id="admissions" class="section">
+        <div class="section-content">
+            <div class="container">
+                <h2 class="section-title">Success Stories & Admissions</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: var(--text-light); margin-bottom: 40px;">
+                    Meet our students who have been successfully admitted to Italy's top universities
+                </p>
+
+                <div class="admissions-filters" style="margin-bottom: 30px; text-align: center;">
+                    <button class="btn btn-secondary" onclick="filterAdmissions('all')" style="padding: 10px 20px;">
+                        All Universities
+                    </button>
+                    <button class="btn btn-secondary" onclick="filterAdmissions('masters')" style="padding: 10px 20px; margin-left: 10px;">
+                        Master's Degree
+                    </button>
+                    <button class="btn btn-secondary" onclick="filterAdmissions('bachelor')" style="padding: 10px 20px; margin-left: 10px;">
+                        Bachelor's Degree
+                    </button>
+                </div>
+
+                <div class="admissions-grid" id="admissionsGrid">
+                    <!-- Admissions will be populated here -->
                 </div>
             </div>
         </div>
@@ -535,7 +601,7 @@
                                     </a>
                                     <br>
                                     <a href="tel:+213672713462" style="color: var(--secondary-blue); text-decoration: none;">
-                                        +213 672 71 34 62
+                                        +213 668 72 24 95
                                     </a>
                                 </p>
                             </div>
@@ -585,6 +651,7 @@
                 <h4>Quick Links</h4>
                 <a href="#home">Home</a>
                 <a href="#universities">Universities</a>
+                <a href="#admissions">Success Stories</a>
                 <a href="#services">Services</a>
                <a href="#" onclick="showSection('contact'); return false;">
     Contact
