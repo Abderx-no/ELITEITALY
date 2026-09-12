@@ -615,6 +615,402 @@ nav button.active {
 
 
 /* ================================
+   ADMISSIONS SECTION
+================================ */
+
+.admissions-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+}
+
+
+.admission-card {
+    background: var(--white);
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+        0 5px 25px rgba(0, 51, 204, 0.08);
+
+    border: 1px solid rgba(0, 82, 255, 0.1);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.admission-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 51, 204, 0.15);
+
+    border-color: var(--accent-blue);
+}
+
+
+.admission-letter-image {
+    position: relative;
+
+    width: 100%;
+
+    height: 350px;
+
+    overflow: hidden;
+
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.admission-letter-image:hover {
+    transform: scale(1.02);
+}
+
+.admission-letter-image:hover .image-click-hint {
+    opacity: 1;
+}
+
+
+.admission-letter-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+    
+    border-radius: 8px 8px 0 0;
+    
+    transition: all 0.3s ease;
+}
+
+
+.image-click-hint {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, -50%);
+    
+    background: rgba(0, 0, 0, 0.7);
+    
+    color: white;
+    
+    padding: 12px 20px;
+    
+    border-radius: 8px;
+    
+    font-weight: 700;
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    opacity: 0;
+    
+    transition: opacity 0.3s ease;
+}
+
+
+/* ================================
+   IMAGE MODAL
+================================ */
+
+.image-modal {
+    display: none;
+    
+    position: fixed;
+    
+    z-index: 2000;
+    
+    left: 0;
+    top: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.95);
+    
+    align-items: center;
+    justify-content: center;
+    
+    animation: fadeIn 0.3s ease;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.modal-content {
+    position: relative;
+    
+    max-width: 90vw;
+    max-height: 90vh;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    animation: zoomIn 0.3s ease;
+}
+
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.modal-content img {
+    max-width: 90vw;
+    max-height: 85vh;
+    
+    width: auto;
+    height: auto;
+    
+    object-fit: contain;
+    
+    border-radius: 12px;
+    
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+
+.close-modal {
+    position: absolute;
+    
+    top: 20px;
+    right: 30px;
+    
+    color: #ffffff;
+    
+    font-size: 40px;
+    
+    font-weight: bold;
+    
+    cursor: pointer;
+    
+    transition: all 0.3s ease;
+    
+    z-index: 2001;
+}
+
+
+.close-modal:hover {
+    color: var(--accent-blue);
+    
+    transform: scale(1.2);
+}
+
+
+.modal-caption {
+    color: rgba(255, 255, 255, 0.9);
+    
+    text-align: center;
+    
+    margin-top: 20px;
+    
+    font-size: 1.1rem;
+    
+    max-width: 80vw;
+}
+
+
+@media (max-width: 768px) {
+    .modal-content img {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+    }
+    
+    .modal-caption {
+        font-size: 0.95rem;
+    }
+}
+
+
+.admission-badge {
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    background: linear-gradient(135deg, #1689e8, #2948d8);
+
+    color: white;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    box-shadow: 0 4px 15px rgba(0, 82, 255, 0.3);
+}
+
+
+.admission-content {
+    padding: 25px;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.admission-content h3 {
+    font-size: 1.4rem;
+
+    color: var(--primary-dark);
+
+    margin-bottom: 8px;
+
+    font-weight: 800;
+}
+
+
+.admission-country {
+    color: var(--secondary-blue);
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
+    font-size: 0.95rem;
+}
+
+
+.admission-details {
+    background: rgba(0, 82, 255, 0.05);
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin: 15px 0;
+
+    font-size: 0.9rem;
+
+    border-left: 3px solid var(--secondary-blue);
+}
+
+
+.admission-details p {
+    margin: 8px 0;
+
+    color: var(--text-dark);
+}
+
+
+.admission-details strong {
+    color: var(--secondary-blue);
+}
+
+
+.admission-testimonial {
+    font-style: italic;
+
+    color: var(--text-light);
+
+    margin: 15px 0;
+
+    padding: 12px;
+
+    border-left: 3px solid var(--accent-blue);
+
+    line-height: 1.6;
+
+    flex-grow: 1;
+}
+
+
+.admission-footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #f0f0f0;
+
+    font-size: 0.9rem;
+}
+
+
+.admission-year {
+    color: var(--text-light);
+
+    font-weight: 600;
+}
+
+
+.admission-status {
+    color: #4CAF50;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.admissions-filters {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin: 30px 0;
+}
+
+
+/* ================================
    UNIVERSITIES
 ================================ */
 
@@ -1185,6 +1581,7 @@ footer .divider {
 
     .nav-container {
         gap: 15px;
+        flex-wrap: wrap;
     }
 
     .logo {
@@ -1248,7 +1645,8 @@ footer .divider {
     .unis-grid,
     .resources-grid,
     .pricing-cards,
-    .how-it-works {
+    .how-it-works,
+    .admissions-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1280,6 +1678,14 @@ footer .divider {
     .form-container {
         padding: 25px 20px;
     }
+
+    .admissions-filters {
+        flex-direction: column;
+    }
+
+    .admissions-filters .btn {
+        width: 100%;
+    }
 }
 
 /*majors-section*/
@@ -1308,4 +1714,265 @@ footer .divider {
     background: #e8efff;
     color: #0033cc;
     font-size: 13px;
+}
+/* ===== ADMISSION IMAGE ===== */
+
+.admission-letter-image {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #f5f5f5;
+}
+
+.admission-letter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.admission-letter-image:hover img {
+    transform: scale(1.03);
+}
+
+
+/* ================================
+   FULL SCREEN IMAGE MODAL + ZOOM
+================================ */
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.95);
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* IMAGE AREA */
+.modal-image-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+/* BIG IMAGE */
+.modal-image {
+    max-width: 90%;
+    max-height: 85%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    cursor: zoom-in;
+
+    transition: transform 0.2s ease;
+
+    user-select: none;
+}
+
+/* When zoomed */
+.modal-image.zoomed {
+    cursor: grab;
+}
+
+.modal-image.zoomed:active {
+    cursor: grabbing;
+}
+
+/* CLOSE BUTTON */
+.image-modal-close {
+    position: absolute;
+
+    top: 15px;
+    right: 30px;
+
+    color: white;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 100000;
+
+    line-height: 1;
+}
+
+.image-modal-close:hover {
+    color: #00a8ff;
+}
+
+/* ZOOM CONTROLS */
+.zoom-controls {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 100000;
+}
+
+.zoom-controls button {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+}
+
+.zoom-controls button:hover {
+    background: #0052ff;
+}
+
+/* CAPTION */
+.modal-caption {
+    position: absolute;
+
+    bottom: 90px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    max-width: 90%;
+
+    z-index: 100000;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .modal-image {
+        max-width: 95%;
+        max-height: 80%;
+    }
+
+    .image-modal-close {
+        top: 10px;
+        right: 20px;
+        font-size: 40px;
+    }
+
+    .zoom-controls button {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* THE WHOLE ADMISSION LETTER */
+
+.modal-image {
+    max-width: 95%;
+    max-height: 90vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+
+/* CLOSE BUTTON */
+
+.image-modal-close {
+    position: absolute;
+
+    top: 15px;
+    right: 30px;
+
+    color: white;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 100000;
+
+    line-height: 1;
+}
+
+.image-modal-close:hover {
+    color: #00a8ff;
+}
+
+
+/* CAPTION */
+
+.modal-caption {
+    color: white;
+
+    font-size: 16px;
+    text-align: center;
+
+    margin-top: 12px;
+
+    max-width: 90%;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .admission-letter-image {
+        height: 300px;
+    }
+
+    .modal-image {
+        max-width: 98%;
+        max-height: 85vh;
+    }
+
+    .image-modal-close {
+        top: 10px;
+        right: 20px;
+        font-size: 40px;
+    }
+
 }
