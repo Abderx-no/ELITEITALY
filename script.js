@@ -1,3 +1,409 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+    const savedSection =
+        localStorage.getItem("eliteItalyCurrentSection");
+
+    if (savedSection && document.getElementById(savedSection)) {
+
+        showSection(savedSection, false);
+
+    } else {
+
+        showSection("home", false);
+
+    }
+
+});
+
+// ========================================
+// ADMISSION IMAGE ZOOM
+// ========================================
+
+let currentZoom = 1;
+
+const MIN_ZOOM = 1;
+const MAX_ZOOM = 5;
+const ZOOM_STEP = 0.25;
+
+function openImageModal(imageSrc, caption) {
+
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalCaption = document.getElementById("modalCaption");
+    const wrapper = document.getElementById("modalImageWrapper");
+
+    currentZoom = 1;
+
+    modal.style.display = "flex";
+
+    modalImg.src = imageSrc;
+    modalCaption.textContent = caption;
+
+    modalImg.style.transform = "scale(1)";
+
+    wrapper.scrollLeft = 0;
+    wrapper.scrollTop = 0;
+}
+
+
+function closeImageModal() {
+
+    const modal = document.getElementById("imageModal");
+
+    modal.style.display = "none";
+
+    currentZoom = 1;
+}
+
+
+function updateZoom() {
+
+    const img = document.getElementById("modalImage");
+
+    img.style.transform = `scale(${currentZoom})`;
+}
+
+
+function zoomIn() {
+
+    if (currentZoom < MAX_ZOOM) {
+
+        currentZoom += ZOOM_STEP;
+
+        updateZoom();
+    }
+}
+
+
+function zoomOut() {
+
+    if (currentZoom > MIN_ZOOM) {
+
+        currentZoom -= ZOOM_STEP;
+
+        updateZoom();
+    }
+}
+
+
+function resetZoom() {
+
+    currentZoom = 1;
+
+    updateZoom();
+
+    const wrapper = document.getElementById("modalImageWrapper");
+
+    wrapper.scrollLeft = 0;
+    wrapper.scrollTop = 0;
+}
+const modalWrapper = document.getElementById("modalImageWrapper");
+
+modalWrapper.addEventListener("wheel", function(event) {
+
+    event.preventDefault();
+
+    if (event.deltaY < 0) {
+        zoomIn();
+    } else {
+        zoomOut();
+    }
+
+}, { passive: false });
+let isDragging = false;
+let startX;
+let startY;
+let scrollLeft;
+let scrollTop;
+
+modalWrapper.addEventListener("mousedown", function(e) {
+
+    isDragging = true;
+
+    startX = e.pageX - modalWrapper.offsetLeft;
+    startY = e.pageY - modalWrapper.offsetTop;
+
+    scrollLeft = modalWrapper.scrollLeft;
+    scrollTop = modalWrapper.scrollTop;
+
+});
+
+
+modalWrapper.addEventListener("mouseleave", function() {
+
+    isDragging = false;
+
+});
+
+
+modalWrapper.addEventListener("mouseup", function() {
+
+    isDragging = false;
+
+});
+
+
+modalWrapper.addEventListener("mousemove", function(e) {
+
+    if (!isDragging) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - modalWrapper.offsetLeft;
+    const y = e.pageY - modalWrapper.offsetTop;
+
+    const walkX = (x - startX) * 1.5;
+    const walkY = (y - startY) * 1.5;
+
+    modalWrapper.scrollLeft = scrollLeft - walkX;
+    modalWrapper.scrollTop = scrollTop - walkY;
+
+});
+
+// ===== ADMISSIONS DATA WITH REAL ADMISSION LETTERS =====
+const admissions = [
+
+{
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Palermo",
+        program: "Master's Degree in System and Hospitality management ",
+        degree: "Master",
+        letterImage: "University of palermo.jpg",
+        testimonial: "Successfully admitted to Plermo University for System and Hospitality Management studies.",
+        date: "2026",
+        score: "IELTS Required"
+    },
+{
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Napoli Federico II",
+        program: "Master's degree in Science politics ",
+        degree: "Master",
+        letterImage: "University of napoli.jpg",
+        testimonial: "Successfully admitted to Napoli University for Science politics studies.",
+        date: "2026",
+        score: "IELTS Not Required"
+    },
+{
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Tuscia",
+        program: "Master's degree in Human Right ",
+        degree: "Master",
+        letterImage: "University of Tuscia.jpg",
+        testimonial: "Successfully admitted to Tuscia University for Human Right studies.",
+        date: "2026",
+        score: "IELTS Not Required"
+    },
+
+
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Messina",
+        program: "Bachelor's Degree Course in Business Management",
+        degree: "bachelor",
+        letterImage: "messina.jpg",
+        testimonial: "Successfully admitted to Messina University for Business Management studies.",
+        date: "2026",
+        score: "IELTS Required"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Messina",
+        program: "Bachelor's Degree Course in Data Analysis",
+        degree: "bachelor",
+        letterImage: "messina.png2.jpg",
+        testimonial: "Admission confirmed for Data Analysis program at University of Messina.",
+        date: "2026",
+        score: "IELTS Required"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università di Pisa",
+        program: "International Programme in Humanities (Master's)",
+        degree: "masters",
+        letterImage: "pisa.png.jpg",
+        testimonial: "Accepted to University of Pisa's prestigious International Humanities program.",
+        date: "2026",
+        score: "Master's Program"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Napoli Federico II",
+        program: "Master's Degree in Transportation Engineering and Mobility",
+        degree: "masters",
+        letterImage: "Naples Federico II.png.jpg",
+        testimonial: "Pre-admission to Naples Federico II for Transportation Engineering program.",
+        date: "2026",
+        score: "Engineering Master's"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Palermo",
+        program: "Bachelor's Degree in Economics and Sustainable Cooperation",
+        degree: "bachelor",
+        letterImage: "palermo.png.jpg",
+        testimonial: "Admitted to University of Palermo's Economics program focusing on sustainable cooperation.",
+        date: "2026",
+        score: "Economics"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli Studi di Palermo",
+        program: "Bachelor's Degree in Industrial and Information Engineering",
+        degree: "bachelor",
+        letterImage: "palermo.png2.jpg",
+        testimonial: "Successfully admitted to Palermo University's Industrial Engineering program.",
+        date: "2026",
+        score: "Engineering"
+    }
+];
+
+// ===== DISPLAY ADMISSIONS =====
+function displayAdmissions(admissionsToShow = admissions) {
+    const grid = document.getElementById("admissionsGrid");
+
+    if (!grid) {
+        console.error("admissionsGrid not found");
+        return;
+    }
+
+    grid.innerHTML = admissionsToShow.map(admission => `
+        <div class="admission-card">
+
+            <div class="admission-letter-image"
+                 onclick="openImageModal('${admission.letterImage}', '${admission.university}')">
+
+                <img 
+                    src="${admission.letterImage}" 
+                    alt="Admission Letter"
+                >
+
+                <div class="admission-badge">
+                    ${admission.degree === "masters" ? "Master's" : "Bachelor's"}
+                </div>
+
+                <div class="image-click-hint">
+                    <i class="fas fa-expand"></i>
+                    Click to enlarge
+                </div>
+
+            </div>
+
+            <div class="admission-content">
+
+                <h3>${admission.university}</h3>
+
+                <p class="admission-country">
+                    <i class="fas fa-globe"></i>
+                    ${admission.country}
+                </p>
+
+                <div class="admission-details">
+                    <p><strong>Program:</strong> ${admission.program}</p>
+                    <p><strong>Type:</strong> ${admission.score}</p>
+                    <p><strong>Year:</strong> ${admission.date}</p>
+                </div>
+
+                <p class="admission-testimonial">
+                    "${admission.testimonial}"
+                </p>
+
+                <div class="admission-footer">
+                    <span class="admission-year">
+                        Admission ${admission.date}
+                    </span>
+
+                    <span class="admission-status">
+                        <i class="fas fa-check-circle"></i> Verified
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    `).join("");
+}
+ 
+// ===== FILTER ADMISSIONS FUNCTION =====
+function filterAdmissions(filter) {
+    console.log("Filtering admissions by:", filter);
+    let filtered = admissions;
+    
+    if (filter === 'masters') {
+        filtered = admissions.filter(a => a.degree === 'masters');
+    } else if (filter === 'bachelor') {
+        filtered = admissions.filter(a => a.degree === 'bachelor');
+    }
+    
+    displayAdmissions(filtered);
+}
+ 
+// ===== SECTION NAVIGATION =====
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+    });
+ 
+    // Show selected section
+    const selectedSection = document.getElementById(sectionId);
+    if (selectedSection) {
+        selectedSection.classList.add("active");
+    }
+ 
+    // Update active nav button
+    document.querySelectorAll("nav .nav-btn").forEach(button => {
+        button.classList.remove("active");
+    });
+ 
+    const navButtons = document.querySelectorAll("nav .nav-btn");
+    navButtons.forEach(button => {
+        const onclickValue = button.getAttribute("onclick");
+        if (onclickValue && onclickValue.includes(`'${sectionId}'`)) {
+            button.classList.add("active");
+        }
+    });
+ 
+    // Load admissions when section is displayed
+    if (sectionId === "admissions") {
+        displayAdmissions();
+    }
+ 
+    // Scroll to top
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+ 
+// ===== FORM SUBMISSION =====
+function submitForm(e) {
+    e.preventDefault();
+    
+    const successMsg = document.getElementById("successMessage");
+    successMsg.style.display = "block";
+ 
+    e.target.reset();
+ 
+    setTimeout(() => {
+        successMsg.style.display = "none";
+    }, 5000);
+}
+ 
+// ===== INITIALIZE =====
+document.addEventListener('DOMContentLoaded', function() {
+    displayAdmissions();
+    console.log("Page initialized");
+});
+
+
 // University Data
 const universities = [
 
@@ -575,6 +981,86 @@ const ieltsResources = [
     }
 ];
 
+
+
+// ===== OPEN ADMISSION IMAGE =====
+function openImageModal(imageSrc, caption) {
+
+    console.log("Opening image:", imageSrc);
+
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalCaption = document.getElementById("modalCaption");
+
+    if (!modal) {
+        console.error("ERROR: imageModal not found in HTML!");
+        return;
+    }
+
+    if (!modalImage) {
+        console.error("ERROR: modalImage not found in HTML!");
+        return;
+    }
+
+    modalImage.src = imageSrc;
+
+    if (modalCaption) {
+        modalCaption.textContent = caption;
+    }
+
+    modal.style.display = "flex";
+
+    document.body.style.overflow = "hidden";
+}
+
+
+// ===== CLOSE ADMISSION IMAGE =====
+function closeImageModal() {
+
+    const modal = document.getElementById("imageModal");
+
+    if (modal) {
+        modal.style.display = "none";
+    }
+
+    document.body.style.overflow = "auto";
+}
+
+
+// ===== CLOSE WHEN CLICKING BACKGROUND =====
+document.addEventListener("click", function(event) {
+
+    const modal = document.getElementById("imageModal");
+
+    if (modal && event.target === modal) {
+        closeImageModal();
+    }
+
+});
+
+
+// ===== CLOSE WITH ESC =====
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeImageModal();
+    }
+
+});
+
+// ===== FILTER ADMISSIONS FUNCTION =====
+function filterAdmissions(filter) {
+    let filtered = admissions;
+    
+    if (filter === 'masters') {
+        filtered = admissions.filter(a => a.degree === 'masters');
+    } else if (filter === 'bachelor') {
+        filtered = admissions.filter(a => a.degree === 'bachelor');
+    }
+    
+    displayAdmissions(filtered);
+}
+
 // ===== UNIVERSITY & MAJOR SELECTION FUNCTIONS =====
 
 // Initialize Contact Section with Universities
@@ -790,8 +1276,6 @@ function updateSelectedMajors() {
     }
 }
 
-// ===== END NEW FUNCTIONS =====
-
 // Display Universities
 function displayUniversities(unis = universities) {
 
@@ -864,6 +1348,7 @@ function displayUniversities(unis = universities) {
         </div>
     `).join("");
 }
+
 // Display IELTS Resources
 function displayResources() {
     const grid = document.getElementById("resourcesGrid");
@@ -892,8 +1377,12 @@ function displayResources() {
         </div>
     `).join("");
 }
+
 // Section Navigation
 function showSection(sectionId, addToHistory = true) {
+
+    // Remember the current page/section
+    localStorage.setItem("eliteItalyCurrentSection", sectionId);
 
     // Hide all sections
     document.querySelectorAll(".section").forEach(section => {
@@ -928,6 +1417,11 @@ function showSection(sectionId, addToHistory = true) {
         displayUniversities();
     }
 
+    // Load Admissions
+    if (sectionId === "admissions") {
+        displayAdmissions();
+    }
+
     // Load IELTS Resources
     if (sectionId === "ielts") {
         displayResources();
@@ -955,7 +1449,6 @@ function showSection(sectionId, addToHistory = true) {
         behavior: "smooth"
     });
 }
-
 
 // Browser Back and Forward buttons
 window.addEventListener("popstate", function(event) {
@@ -1005,6 +1498,7 @@ function filterUniversities() {
 
     displayUniversities(filtered);
 }
+
 // Reset Filters
 function resetFilters() {
 
@@ -1112,9 +1606,4 @@ function submitForm(e) {
 // Initialize
 displayUniversities();
 displayResources();
-
-// Load the correct section on page refresh
-window.addEventListener("DOMContentLoaded", function() {
-    const sectionId = window.location.hash.replace("#", "") || "home";
-    showSection(sectionId, false);
-});
+displayAdmissions();
