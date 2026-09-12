@@ -204,7 +204,7 @@ const admissions = [
         university: "Università degli Studi di Messina",
         program: "Bachelor's Degree Course in Business Management",
         degree: "bachelor",
-        letterImage: "messina.png.jpg",
+        letterImage: "messina.jpg",
         testimonial: "Successfully admitted to Messina University for Business Management studies.",
         date: "2026",
         score: "IELTS Required"
@@ -287,7 +287,7 @@ function displayAdmissions(admissionsToShow = admissions) {
                 >
 
                 <div class="admission-badge">
-                    ${admission.degree === "masters" ? "Master's" : "Admission Letter"}
+                    ${admission.degree === "masters" ? "Master's" : "Admission Letter "}
                 </div>
 
                 <div class="image-click-hint">
@@ -1555,55 +1555,149 @@ function contactForPackage(packageName) {
 }
 
 // Form Submission - ENHANCED
-function submitForm(e) {
-
+async function submitForm(e) {
     e.preventDefault();
 
-    // Validate at least one university is selected
-    const selectedUnis = document.querySelector("input[name='universities']:checked");
-    
-    if (!selectedUnis) {
-        alert("Please select at least one university to apply to.");
-        return;
-    }
+    // Get form
+    const form = e.target;
 
-    // Get form data
+    // Get selected universities
     const selectedUniversities = Array.from(
         document.querySelectorAll("input[name='universities']:checked")
     ).map(cb => cb.value);
 
+    // Check university selection
+    if (selectedUniversities.length === 0) {
+        alert("Please select at least one university to apply to.");
+        return;
+    }
+
+    // Get selected majors
     const selectedMajors = Array.from(
         document.querySelectorAll("input[name='majors']:checked")
     ).map(cb => cb.value);
 
-    console.log("Form Submission Data:", {
-        name: document.querySelector("input[name='name']").value,
-        email: document.querySelector("input[name='email']").value,
-        universities: selectedUniversities,
-        majors: selectedMajors,
-        level: document.querySelector("select[name='level']").value,
-        package: document.querySelector("select[name='package']").value
-    });
+    // Get form values
+    const data = {
+        name: document.querySelector("input[name='name']")?.value || "",
+        email: document.querySelector("input[name='email']")?.value || "",
+        phone: document.querySelector("input[name='phone']")?.value || "",
+        level: document.querySelector("select[name='level']")?.value || "",
+        package: document.querySelector("select[name='package']")?.value || "",
+        universities: selectedUniversities.join(", "),
+        majors: selectedMajors.join(", "),
+        message: document.querySelector("textarea[name='message']")?.value || ""
+    };
 
-    // Show success message
+    console.log("Sending application:", data);
+
+    // Show sending message
     const successMsg = document.getElementById("successMessage");
-    successMsg.style.display = "block";
 
-    e.target.reset();
+    if (successMsg) {
+        successMsg.style.display = "block";
+        successMsg.textContent = "Sending your application...";
+    }
 
-    // Reset checkboxes visual state
-    document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
-    document.getElementById("selectedUnisSummary").style.display = "none";
-    document.getElementById("selectedMajorsSummary").style.display = "none";
-    document.getElementById("noMajorsMessage").style.display = "block";
-    document.getElementById("majorsCheckboxes").innerHTML = "";
+    try {
 
-    setTimeout(() => {
-        successMsg.style.display = "none";
-    }, 5000);
+        const response = await fetch(
+            "https://elite-italy-telegram.abderrahmanem627.workers.dev/",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }
+        );
+
+        const result = await response.json();
+
+        console.log("Worker response:", result);
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.error?.description ||
+                result.error ||
+                "Failed to send application"
+            );
+        }
+
+        // SUCCESS
+        if (successMsg) {
+            successMsg.style.display = "block";
+            successMsg.textContent =
+                "✅ Your application has been sent successfully!";
+        }
+
+        // Reset form
+        form.reset();
+
+        // Reset university selections
+        document.querySelectorAll(
+            "input[name='universities']"
+        ).forEach(cb => {
+            cb.checked = false;
+        });
+
+        // Reset major selections
+        document.querySelectorAll(
+            "input[name='majors']"
+        ).forEach(cb => {
+            cb.checked = false;
+        });
+
+        // Reset summaries
+        const selectedUnisSummary =
+            document.getElementById("selectedUnisSummary");
+
+        const selectedMajorsSummary =
+            document.getElementById("selectedMajorsSummary");
+
+        const noMajorsMessage =
+            document.getElementById("noMajorsMessage");
+
+        const majorsCheckboxes =
+            document.getElementById("majorsCheckboxes");
+
+        if (selectedUnisSummary) {
+            selectedUnisSummary.style.display = "none";
+        }
+
+        if (selectedMajorsSummary) {
+            selectedMajorsSummary.style.display = "none";
+        }
+
+        if (noMajorsMessage) {
+            noMajorsMessage.style.display = "block";
+        }
+
+        if (majorsCheckboxes) {
+            majorsCheckboxes.innerHTML = "";
+        }
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            if (successMsg) {
+                successMsg.style.display = "none";
+            }
+        }, 5000);
+
+    } catch (error) {
+
+        console.error("Application error:", error);
+
+        if (successMsg) {
+            successMsg.style.display = "block";
+            successMsg.textContent =
+                "❌ Failed to send application. Please try again.";
+        }
+
+        alert(
+            "There was a problem sending your application. Please try again."
+        );
+    }
 }
-
-// Initialize
-displayUniversities();
-displayResources();
-displayAdmissions();
