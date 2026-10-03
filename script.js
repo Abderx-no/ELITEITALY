@@ -1737,30 +1737,21 @@ function getUniqueCities() {
 }
 
 // Display City Checkboxes
-function displayCityCheckboxes() {
+function displayCityCheckboxes(cities = getUniqueCities(), checkedSet = null) {
     const citiesContainer = document.getElementById("citiesCheckboxes");
-    
     if (!citiesContainer) return;
 
-    const cities = getUniqueCities();
-    const checkedCities = new Set(
+    const checked = checkedSet || new Set(
         Array.from(document.querySelectorAll("input[name='cities']:checked")).map(cb => cb.value)
     );
 
     citiesContainer.innerHTML = cities.map((city, index) => `
-        <div style="display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 4px; cursor: pointer;">
-            <input 
-                type="checkbox" 
-                id="city_${index}" 
-                name="cities" 
-                value="${city}"
-                ${checkedCities.has(city) ? "checked" : ""}
-                style="width: 18px; height: 18px; cursor: pointer;"
-                onchange="filterUniversitiesInContact();"
-            >
-            <label for="city_${index}" style="cursor: pointer; margin: 0; flex: 1; font-weight: 500;">
-                ${city}
-            </label>
+        <div style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:4px;cursor:pointer;">
+            <input type="checkbox" id="city_${index}" name="cities" value="${city}"
+                ${checked.has(city) ? "checked" : ""}
+                style="width:18px;height:18px;cursor:pointer;"
+                onchange="filterUniversitiesInContact();">
+            <label for="city_${index}" style="cursor:pointer;margin:0;flex:1;font-weight:500;">${city}</label>
         </div>
     `).join("");
 }
@@ -1811,31 +1802,46 @@ function displayUniversitiesInContact(unis = universities) {
 
 // Filter Universities in Contact Form
 function filterUniversitiesInContact() {
-    const ieltsFilterEl = document.getElementById("ieltsFilterContact");
-    const ieltsFilter = ieltsFilterEl ? ieltsFilterEl.value : "all";
-    
-    // Get all selected cities
-    const selectedCities = Array.from(
-        document.querySelectorAll("input[name='cities']:checked")
-    ).map(cb => cb.value);
+    const el = document.getElementById("ieltsFilterContact");
+    const ieltsFilter = el ? el.value : "all";
 
-    const filtered = universities.filter(uni => {
-        const ieltsMatch =
-            ieltsFilter === "all" ||
-            (ieltsFilter === "required" && uni.ielts) ||
-            (ieltsFilter === "not-required" && !uni.ielts);
+    const matchesIelts = uni =>
+        ieltsFilter === "all" ||
+        (ieltsFilter === "required" && uni.ielts === true) ||
+        (ieltsFilter === "not-required" && uni.ielts === false);
 
-        // If no cities selected, show all; otherwise show only selected cities
-        const cityMatch =
-            selectedCities.length === 0 ||
-            selectedCities.includes(uni.city);
+    // universities already ticked must stay visible
+    const checkedUnis = new Set(
+        Array.from(document.querySelectorAll("input[name='universities']:checked")).map(cb => cb.value)
+    );
 
-        return ieltsMatch && cityMatch;
-    });
+    // cities available for this IELTS option
+    const availableCities = [...new Set(universities.filter(matchesIelts).map(u => u.city))].sort();
+
+    // keep only ticked cities that still apply
+    const keepCities = Array.from(document.querySelectorAll("input[name='cities']:checked"))
+        .map(cb => cb.value)
+        .filter(c => availableCities.includes(c));
+
+    displayCityCheckboxes(availableCities, new Set(keepCities));
+
+    const filtered = universities.filter(uni =>
+        checkedUnis.has(uni.name) ||
+        (matchesIelts(uni) && (keepCities.length === 0 || keepCities.includes(uni.city)))
+    );
 
     displayUniversitiesInContact(filtered);
-}
 
+    if (filtered.length === 0) {
+        const msgs = {
+            en: "No universities match these filters.",
+            fr: "Aucune université ne correspond à ces filtres.",
+            ar: "لا توجد جامعات تطابق هذه الفلاتر."
+        };
+        document.getElementById("universitiesCheckboxes").innerHTML =
+            `<p style="padding:20px;color:#666;">${msgs[currentLang] || msgs.en}</p>`;
+    }
+}
 // Reset City Filters
 function resetCityFilter() {
     // Uncheck all city checkboxes
