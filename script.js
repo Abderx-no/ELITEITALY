@@ -1011,7 +1011,23 @@ const admissions = [
         testimonial_ar: " تم قبوله بنجاح في برنامج هندسة الحاسوب .",
         date: "2026",
         score: "Engineering"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli di Genoa ",
+        program: "Bachelor's Degree in computer engineering  ",
+        program_fr: "Licenceen génie informatique ",
+        program_ar: " بكالوريوس في هندسة الحاسوب   ",
+        degree: "bachelor",
+        letterImage: "",
+        testimonial: "Successfully admitted to Genoa University's Computer Science .",
+        testimonial_fr: "Admis avec succès au programme L'informatique de l'Université de Genoa .",
+        testimonial_ar: " تم قبوله بنجاح في برنامج هندسة الحاسوب .",
+        date: "2026",
+        score: "Engineering"
     }
+
 ];
 
 // ===== DISPLAY ADMISSIONS =====
