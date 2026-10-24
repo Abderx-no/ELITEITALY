@@ -981,6 +981,36 @@ const admissions = [
         testimonial_ar: "تم قبوله بنجاح في برنامج الهندسة الصناعية بجامعة باليرمو.",
         date: "2026",
         score: "Engineering"
+    },
+    {
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli di Udine ",
+        program: "Bachelor's Degree in Management & Business Analytics",
+        program_fr: "Licence  en gestion et analyse commerciale",
+        program_ar: "بكالوريوس في  الإدارة والتحليل التجاري",
+        degree: "bachelor",
+        letterImage: "Udine.jpg",
+        testimonial: "Successfully admitted to Udine University's Management & Business Analytics program.",
+        testimonial_fr: "Admis avec succès au programme degestion et analyse commerciale de l'Université de Udine.",
+        testimonial_ar: "تم قبوله بنجاح في برنامج الإدارة والتحليل التجاري.",
+        date: "2026",
+        score: "Management"
+    },
+{
+        name: "Student from Algeria",
+        country: "Algeria",
+        university: "Università degli di Genoa ",
+        program: "Bachelor's Degree in computer engineering  ",
+        program_fr: "Licenceen génie informatique ",
+        program_ar: " بكالوريوس في هندسة الحاسوب   ",
+        degree: "bachelor",
+        letterImage: "Genoa.jpg",
+        testimonial: "Successfully admitted to Genoa University's Computer Science .",
+        testimonial_fr: "Admis avec succès au programme L'informatique de l'Université de Genoa .",
+        testimonial_ar: " تم قبوله بنجاح في برنامج هندسة الحاسوب .",
+        date: "2026",
+        score: "Engineering"
     }
 ];
 
