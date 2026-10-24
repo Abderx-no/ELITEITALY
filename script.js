@@ -1020,7 +1020,7 @@ const admissions = [
         program_fr: "Licenceen génie informatique ",
         program_ar: " بكالوريوس في هندسة الحاسوب   ",
         degree: "bachelor",
-        letterImage: "",
+        letterImage: "Genoa.jpg.jpg",
         testimonial: "Successfully admitted to Genoa University's Computer Science .",
         testimonial_fr: "Admis avec succès au programme L'informatique de l'Université de Genoa .",
         testimonial_ar: " تم قبوله بنجاح في برنامج هندسة الحاسوب .",
