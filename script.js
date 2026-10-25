@@ -2578,3 +2578,118 @@ async function submitCimeaForm(e) {
     }
 }
 
+async function submitCimeaForm(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("cimeaForm");
+    const successBox = document.getElementById("cimeaSuccess");
+    const submitButton = document.getElementById("cimeaSubmit");
+
+    const workerURL =
+        "https://elite-italy-telegram.abderrahmanem627.workers.dev/";
+
+    // Reset previous messages
+    successBox.style.display = "none";
+    successBox.textContent = "";
+
+    // Check uploaded files
+    const fileInputs = form.querySelectorAll('input[type="file"]');
+    const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png"
+    ];
+
+    const maxFileSize = 20 * 1024 * 1024;
+
+    for (const input of fileInputs) {
+        for (const file of input.files) {
+
+            if (!allowedTypes.includes(file.type)) {
+                showCimeaMessage(
+                    "Please upload only PDF, JPG or PNG files.",
+                    false
+                );
+                return;
+            }
+
+            if (file.size > maxFileSize) {
+                showCimeaMessage(
+                    `${file.name} exceeds the 20 MB limit.`,
+                    false
+                );
+                return;
+            }
+        }
+    }
+
+    // Prepare form data, including uploaded documents
+    const formData = new FormData(form);
+
+    submitButton.disabled = true;
+    submitButton.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    try {
+        const response = await fetch(workerURL, {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.error || "Your application could not be sent."
+            );
+        }
+
+        showCimeaMessage(
+            "✓ Your CIMEA application and documents have been sent successfully! We will contact you soon.",
+            true
+        );
+
+        form.reset();
+
+    } catch (error) {
+        showCimeaMessage(
+            "✕ Error: " + error.message,
+            false
+        );
+
+    } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML =
+            '<i class="fas fa-paper-plane"></i> Submit CIMEA Application';
+    }
+}
+
+
+// Display success or error messages
+function showCimeaMessage(message, success) {
+    const box = document.getElementById("cimeaSuccess");
+
+    box.textContent = message;
+    box.style.display = "block";
+    box.style.padding = "15px";
+    box.style.marginBottom = "20px";
+    box.style.borderRadius = "8px";
+    box.style.fontWeight = "600";
+
+    if (success) {
+        box.style.backgroundColor = "#e8f5e9";
+        box.style.color = "#2e7d32";
+        box.style.border = "1px solid #a5d6a7";
+    } else {
+        box.style.backgroundColor = "#ffebee";
+        box.style.color = "#c62828";
+        box.style.border = "1px solid #ef9a9a";
+    }
+
+    box.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
