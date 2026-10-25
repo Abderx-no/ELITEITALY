@@ -2488,3 +2488,93 @@ function autoTagI18n() {
         node.parentNode.replaceChild(frag, node);
     });
 }
+
+// ========================================
+// CIMEA APPLICATION SUBMISSION
+// ========================================
+
+async function submitCimeaForm(e) {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const successBox = document.getElementById("cimeaSuccess");
+    const submitButton = document.getElementById("cimeaSubmit");
+
+    const formData = new FormData(form);
+
+    const allowedExtensions = /\.(pdf|jpg|jpeg|png)$/i;
+    const maxFileSize = 20 * 1024 * 1024;
+
+    const files = [];
+
+    for (const [key, value] of formData.entries()) {
+        if (value instanceof File && value.size > 0) {
+            if (!allowedExtensions.test(value.name)) {
+                successBox.style.display = "block";
+                successBox.className = "error";
+                successBox.textContent =
+                    "Please upload only PDF, JPG or PNG files.";
+                return;
+            }
+
+            if (value.size > maxFileSize) {
+                successBox.style.display = "block";
+                successBox.className = "error";
+                successBox.textContent =
+                    value.name + " exceeds the 20 MB limit.";
+                return;
+            }
+
+            files.push(value);
+        }
+    }
+
+    if (files.length === 0) {
+        successBox.style.display = "block";
+        successBox.className = "error";
+        successBox.textContent =
+            "Please upload at least one document.";
+        return;
+    }
+
+    successBox.style.display = "block";
+    successBox.className = "";
+    successBox.textContent = "⏳ Sending your CIMEA application...";
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+
+    try {
+        const response = await fetch(
+            "https://elite-italy-telegram.abderrahmanem627.workers.dev/",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            throw new Error(
+                result.error || "Unable to send your application."
+            );
+        }
+
+        successBox.className = "";
+        successBox.textContent =
+            "✅ Your CIMEA application and documents were sent successfully!";
+
+        form.reset();
+
+    } catch (error) {
+        successBox.className = "error";
+        successBox.textContent =
+            "❌ " + error.message;
+    } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML =
+            '<i class="fas fa-paper-plane"></i> Submit CIMEA Application';
+    }
+}
+
