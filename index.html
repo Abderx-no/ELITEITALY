@@ -20,6 +20,19 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="B9q_06_bGvrmyTCNYlNKFaB91n15wKVTFQrIH1b4wH0.png">
 </head>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    var v = document.querySelector(".hero-video");
+    if (!v) return;
+    v.muted = true;
+    var p = v.play();
+    if (p && p.catch) {
+        p.catch(function () {
+            document.addEventListener("touchstart", function () { v.play(); }, { once: true });
+        });
+    }
+});
+</script>
 <body>
 
 <!-- IMAGE MODAL (single copy) -->
