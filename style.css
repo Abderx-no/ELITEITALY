@@ -2331,7 +2331,3 @@ footer .divider {
     .hero-video { object-position: 65% center; }
 }
 
-/* People who prefer less motion: show the still picture instead */
-@media (prefers-reduced-motion: reduce) {
-    .hero-video { display: none; }
-}
