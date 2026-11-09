@@ -2781,4 +2781,162 @@ function showCimeaMessage(message, success) {
     });
 }
 
+// ============================================================
+// cimea.js  -  add in index.html right AFTER <script src="script.js"></script>
+//   <script src="cimea.js"></script>
+// It adds the new CIMEA translations (EN / FR / AR), the Bachelor/Master
+// switch, and replaces the old submitCimeaForm functions.
+// ============================================================
 
+Object.assign(TRANSLATIONS.en, {
+    cimea_username: "Username *",
+    cimea_admission: "Admission Details",
+    cimea_university: "University that accepted you *",
+    cimea_major: "Major (study programme) *",
+    cimea_level: "Applying for *",
+    cimea_bachelor: "Bachelor's Degree",
+    cimea_master: "Master's Degree",
+    cimea_bd: "Bachelor Diploma *",
+    cimea_bt: "Bachelor Transcript *",
+    cimea_hs_diploma: "High School Diploma *",
+    cimea_hs_transcript: "High School Transcript *",
+    cimea_translation: "Translation of Documents *",
+    cimea_translation_note: "You can select several files.",
+    cimea_otp_title: "How to Add Your OTP Code",
+    cimea_otp_text: "Watch this short video to see how to add your OTP code.",
+    cimea_video_soon: "Video coming soon",
+    cimea_sign_title: "Signed Declaration",
+    cimea_sign_text: "Download the PDF, read it, sign it electronically, then upload the signed copy below.",
+    cimea_download: "Download PDF",
+    cimea_signed: "Signed PDF *",
+    cimea_sign_note: "Sign with Adobe Acrobat Reader (Fill & Sign) or any PDF app, save the file, then upload it here.",
+    cimea_err_type: "Please upload only PDF, JPG or PNG files.",
+    cimea_err_size: "exceeds the 20 MB limit.",
+    cimea_err_pdf: "The signed document must be a PDF file.",
+    cimea_sending: "Sending...",
+    cimea_ok: "✓ Your CIMEA application and documents have been sent successfully! We will contact you soon.",
+    cimea_fail: "✕ Error: "
+});
+
+Object.assign(TRANSLATIONS.fr, {
+    cimea_username: "Nom d'utilisateur *",
+    cimea_admission: "Détails de l'admission",
+    cimea_university: "Université qui vous a accepté *",
+    cimea_major: "Filière (programme d'études) *",
+    cimea_level: "Candidature en *",
+    cimea_bachelor: "Licence",
+    cimea_master: "Master",
+    cimea_bd: "Diplôme de licence *",
+    cimea_bt: "Relevé de notes de licence *",
+    cimea_hs_diploma: "Diplôme de fin d'études secondaires *",
+    cimea_hs_transcript: "Relevé de notes du secondaire *",
+    cimea_translation: "Traduction des documents *",
+    cimea_translation_note: "Vous pouvez sélectionner plusieurs fichiers.",
+    cimea_otp_title: "Comment ajouter votre code OTP",
+    cimea_otp_text: "Regardez cette courte vidéo pour savoir comment ajouter votre code OTP.",
+    cimea_video_soon: "Vidéo bientôt disponible",
+    cimea_sign_title: "Déclaration signée",
+    cimea_sign_text: "Téléchargez le PDF, lisez-le, signez-le électroniquement, puis téléversez la copie signée ci-dessous.",
+    cimea_download: "Télécharger le PDF",
+    cimea_signed: "PDF signé *",
+    cimea_sign_note: "Signez avec Adobe Acrobat Reader (Remplir et signer) ou une autre application PDF, enregistrez le fichier, puis téléversez-le ici.",
+    cimea_err_type: "Veuillez téléverser uniquement des fichiers PDF, JPG ou PNG.",
+    cimea_err_size: "dépasse la limite de 20 Mo.",
+    cimea_err_pdf: "Le document signé doit être un fichier PDF.",
+    cimea_sending: "Envoi en cours...",
+    cimea_ok: "✓ Votre demande CIMEA et vos documents ont été envoyés avec succès ! Nous vous contacterons bientôt.",
+    cimea_fail: "✕ Erreur : "
+});
+
+Object.assign(TRANSLATIONS.ar, {
+    cimea_username: "اسم المستخدم *",
+    cimea_admission: "تفاصيل القبول",
+    cimea_university: "الجامعة التي قبلتك *",
+    cimea_major: "التخصص *",
+    cimea_level: "التقديم على *",
+    cimea_bachelor: "بكالوريوس",
+    cimea_master: "ماجستير",
+    cimea_bd: "شهادة البكالوريوس *",
+    cimea_bt: "كشف نقاط البكالوريوس *",
+    cimea_hs_diploma: "شهادة الثانوية العامة *",
+    cimea_hs_transcript: "كشف نقاط الثانوية *",
+    cimea_translation: "ترجمة الوثائق *",
+    cimea_translation_note: "يمكنك اختيار عدة ملفات.",
+    cimea_otp_title: "كيفية إضافة رمز OTP",
+    cimea_otp_text: "شاهد هذا الفيديو القصير لمعرفة كيفية إضافة رمز OTP.",
+    cimea_video_soon: "الفيديو قريباً",
+    cimea_sign_title: "الإقرار الموقّع",
+    cimea_sign_text: "حمّل ملف PDF واقرأه ووقّعه إلكترونياً، ثم ارفع النسخة الموقّعة أدناه.",
+    cimea_download: "تحميل PDF",
+    cimea_signed: "ملف PDF الموقّع *",
+    cimea_sign_note: "وقّع باستخدام Adobe Acrobat Reader (Fill & Sign) أو أي تطبيق PDF، ثم احفظ الملف وارفعه هنا.",
+    cimea_err_type: "يرجى رفع ملفات PDF أو JPG أو PNG فقط.",
+    cimea_err_size: "يتجاوز الحد الأقصى 20 ميغابايت.",
+    cimea_err_pdf: "يجب أن تكون الوثيقة الموقّعة بصيغة PDF.",
+    cimea_sending: "جارٍ الإرسال...",
+    cimea_ok: "✓ تم إرسال طلب CIMEA ووثائقك بنجاح! سنتواصل معك قريباً.",
+    cimea_fail: "✕ خطأ: "
+});
+
+// Show the Bachelor-diploma + transcript fields only for Master applicants
+function cimeaToggleLevel() {
+    const form = document.getElementById("cimeaForm");
+    const box = document.getElementById("cimeaMasterDocs");
+    if (!form || !box) return;
+    const isMaster = form.querySelector("input[name='level']:checked").value === "master";
+    box.classList.toggle("cimea-hidden", !isMaster);
+    // disabled inputs are skipped by validation and are not sent
+    box.querySelectorAll("input").forEach(i => { i.disabled = !isMaster; });
+}
+document.addEventListener("DOMContentLoaded", cimeaToggleLevel);
+
+function showCimeaMessage(message, success) {
+    const box = document.getElementById("cimeaSuccess");
+    box.textContent = message;
+    box.style.display = "block";
+    box.className = "success-message" + (success ? "" : " error");
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+// Replaces BOTH old submitCimeaForm functions in script.js
+async function submitCimeaForm(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("cimeaForm");
+    const button = document.getElementById("cimeaSubmit");
+    const workerURL = "https://elite-italy-telegram.abderrahmanem627.workers.dev/";
+    const maxSize = 20 * 1024 * 1024;
+    const okType = /\.(pdf|jpe?g|png)$/i;
+
+    // check every selected file
+    for (const input of form.querySelectorAll("input[type='file']:not(:disabled)")) {
+        for (const file of input.files) {
+            if (!okType.test(file.name)) { showCimeaMessage(t("cimea_err_type"), false); return; }
+            if (file.size > maxSize)     { showCimeaMessage(file.name + " " + t("cimea_err_size"), false); return; }
+        }
+    }
+    const signed = form.querySelector("input[name='signed_pdf']").files[0];
+    if (!signed || !/\.pdf$/i.test(signed.name)) { showCimeaMessage(t("cimea_err_pdf"), false); return; }
+
+    const formData = new FormData(form);
+    formData.set("language", currentLang);
+
+    const oldHTML = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + t("cimea_sending");
+
+    try {
+        const response = await fetch(workerURL, { method: "POST", body: formData });
+        const result = await response.json();
+        if (!response.ok || !result.success) throw new Error(result.error || "Error");
+
+        showCimeaMessage(t("cimea_ok"), true);
+        form.reset();
+        cimeaToggleLevel();
+    } catch (error) {
+        showCimeaMessage(t("cimea_fail") + error.message, false);
+    } finally {
+        button.disabled = false;
+        button.innerHTML = oldHTML;
+    }
+}
