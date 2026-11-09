@@ -182,7 +182,7 @@ const TRANSLATIONS = {
         hours_saturday: "Sat: 10 AM - 4 PM CET",
 
         footer_about_title: "About Elite Italy",
-        footer_about_text: "Leading education consultant for Italy's top universities. 15+ years of expertise helping international students achieve their dreams.",
+        footer_about_text: "Leading education consultant for Italy's top universities.  expertise helping international students achieve their dreams.",
         footer_quick_links: "Quick Links",
         footer_home: "Home",
         footer_universities: "Universities",
