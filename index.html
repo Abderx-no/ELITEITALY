@@ -259,152 +259,169 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </div></div></div></div>
 
-<!-- CIMEA APPLICATION SECTION -->
+<!-- ===== CIMEA APPLICATION SECTION =====
+     In index.html, DELETE the whole old <div id="cimea" class="section"> ... </div>
+     and paste this in its place (same position, before <footer>). -->
 <div id="cimea" class="section">
-    <div class="section-content">
-        <div class="container">
+  <div class="section-content">
+    <div class="container">
 
-            <h2 class="section-title" data-i18n="cimea_title">
-                CIMEA Application
-            </h2>
+      <h2 class="section-title" data-i18n="cimea_title">CIMEA Application</h2>
+      <p class="cimea-intro" data-i18n="cimea_intro">Apply for your CIMEA documents.</p>
 
-            <p class="cimea-intro" data-i18n="cimea_intro">
-                Apply for your CIMEA documents with professional assistance.
-                Complete the form and upload your academic documents.
-            </p>
+      <div class="form-container">
+        <div id="cimeaSuccess" class="success-message"></div>
 
-            <div class="form-container">
+        <form id="cimeaForm" onsubmit="submitCimeaForm(event)">
 
-                <div id="cimeaSuccess" class="success-message"></div>
+          <!-- PERSONAL -->
+          <h3 data-i18n="cimea_personal">Personal Information</h3>
 
-                <form id="cimeaForm" onsubmit="submitCimeaForm(event)">
+          <div class="form-group">
+            <label data-i18n="cimea_name">Full Name *</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_username">Username *</label>
+            <input type="text" name="username" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_email">Email Address *</label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_phone">Phone Number *</label>
+            <input type="tel" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_country">Country *</label>
+            <input type="text" name="country" required>
+          </div>
 
-                    <h3 data-i18n="cimea_personal">
-                        Personal Information
-                    </h3>
+          <hr>
 
-                    <div class="form-group">
-                        <label data-i18n="cimea_name">Full Name *</label>
-                        <input type="text" name="name" required>
-                    </div>
+          <!-- ADMISSION -->
+          <h3 data-i18n="cimea_admission">Admission Details</h3>
 
-                    <div class="form-group">
-                        <label data-i18n="cimea_email">Email Address *</label>
-                        <input type="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_phone">Phone Number *</label>
-                        <input type="tel" name="phone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_country">Country *</label>
-                        <input type="text" name="country" required>
-                    </div>
-
-                    <hr>
-
-                    <h3 data-i18n="cimea_service">
-                        Select Your CIMEA Service
-                    </h3>
-
-                    <div class="form-group">
-                        <select name="service" required>
-    <option value="" data-i18n="cimea_choose">Select a service</option>
-    <option value="Statement of Comparability" data-i18n="cimea_comparability">
-        Statement of Comparability
-    </option>
-    <option value="Statement of Verification" data-i18n="cimea_verification">
-        Statement of Verification
-    </option>
-    <option value="Both Statements" data-i18n="cimea_both">
-        Both Statements
-    </option>
-</select>
-                    </div>
-
-                    <hr>
-
-                    <h3 data-i18n="cimea_documents">
-                        Upload Your Documents
-                    </h3>
-
-                    <p class="cimea-note" data-i18n="cimea_file_note">
-                        Accepted formats: PDF, JPG and PNG. Maximum 20 MB per file.
-                    </p>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_passport">
-                            Passport *
-                        </label>
-                        <input type="file" name="passport"
-                            accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_diploma">
-                            University Diploma *
-                        </label>
-                        <input type="file" name="diploma"
-                            accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_transcript">
-                            Academic Transcript *
-                        </label>
-                        <input type="file" name="transcript"
-                            accept=".pdf,.jpg,.jpeg,.png" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_secondary">
-                            Secondary School Diploma (Optional)
-                        </label>
-                        <input type="file" name="secondary_diploma"
-                            accept=".pdf,.jpg,.jpeg,.png">
-                    </div>
-
-                    <div class="form-group">
-                        <label data-i18n="cimea_other">
-                            Other Documents (Optional)
-                        </label>
-                        <input type="file" name="other_documents"
-                            accept=".pdf,.jpg,.jpeg,.png" multiple>
-                    </div>
-
-                    <hr>
-
-                    <h3 data-i18n="cimea_additional">
-                        Additional Information
-                    </h3>
-
-                    <div class="form-group">
-                        <textarea name="notes" rows="5"
-    data-i18n-placeholder="cimea_notes_placeholder"
-    placeholder="Write any additional information here..."></textarea>
-                    </div>
-
-                    <div class="form-group cimea-consent">
-                        <input type="checkbox" id="cimeaConsent"
-                            required>
-                        <label for="cimeaConsent"
-                            data-i18n="cimea_consent">
-                            I agree to be contacted about my CIMEA application.
-                        </label>
-                    </div>
-
-                    <button type="submit" id="cimeaSubmit"
-    class="btn btn-primary cimea-submit">
-    <i class="fas fa-paper-plane"></i>
-    <span data-i18n="cimea_submit">Submit CIMEA Application</span>
-</button>
-
-                </form>
+          <div class="form-group">
+            <label data-i18n="cimea_university">University that accepted you *</label>
+            <input type="text" name="university" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_major">Major (study programme) *</label>
+            <input type="text" name="major" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_level">Applying for *</label>
+            <div class="cimea-radios">
+              <label><input type="radio" name="level" value="bachelor" checked onchange="cimeaToggleLevel()">
+                <span data-i18n="cimea_bachelor">Bachelor's Degree</span></label>
+              <label><input type="radio" name="level" value="master" onchange="cimeaToggleLevel()">
+                <span data-i18n="cimea_master">Master's Degree</span></label>
             </div>
-        </div>
+          </div>
+
+          <hr>
+
+          <!-- SERVICE -->
+          <h3 data-i18n="cimea_service">Select Your CIMEA Service</h3>
+          <div class="form-group">
+            <select name="service" required>
+              <option value="" data-i18n="cimea_choose">Select a service</option>
+              <option value="Statement of Comparability" data-i18n="cimea_comparability">Statement of Comparability</option>
+              <option value="Statement of Verification" data-i18n="cimea_verification">Statement of Verification</option>
+              <option value="Both Statements" data-i18n="cimea_both">Both Statements</option>
+            </select>
+          </div>
+
+          <hr>
+
+          <!-- DOCUMENTS -->
+          <h3 data-i18n="cimea_documents">Upload Your Documents</h3>
+          <p class="cimea-note" data-i18n="cimea_file_note">PDF, JPG and PNG. Maximum 20 MB per file.</p>
+
+          <!-- Only shown when "Master's Degree" is selected -->
+          <div id="cimeaMasterDocs" class="cimea-hidden">
+            <div class="form-group">
+              <label data-i18n="cimea_bd">Bachelor Diploma *</label>
+              <input type="file" name="bachelor_diploma" accept=".pdf,.jpg,.jpeg,.png" required disabled>
+            </div>
+            <div class="form-group">
+              <label data-i18n="cimea_bt">Bachelor Transcript *</label>
+              <input type="file" name="bachelor_transcript" accept=".pdf,.jpg,.jpeg,.png" required disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label data-i18n="cimea_hs_diploma">High School Diploma *</label>
+            <input type="file" name="highschool_diploma" accept=".pdf,.jpg,.jpeg,.png" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_hs_transcript">High School Transcript *</label>
+            <input type="file" name="highschool_transcript" accept=".pdf,.jpg,.jpeg,.png" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_passport">Passport *</label>
+            <input type="file" name="passport" accept=".pdf,.jpg,.jpeg,.png" required>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_translation">Translation of Documents *</label>
+            <input type="file" name="translation" accept=".pdf,.jpg,.jpeg,.png" multiple required>
+            <p class="cimea-note" data-i18n="cimea_translation_note">You can select several files.</p>
+          </div>
+          <div class="form-group">
+            <label data-i18n="cimea_other">Other Documents (Optional)</label>
+            <input type="file" name="other_documents" accept=".pdf,.jpg,.jpeg,.png" multiple>
+          </div>
+
+          <hr>
+
+          <!-- OTP VIDEO -->
+          <h3 data-i18n="cimea_otp_title">How to Add Your OTP Code</h3>
+          <p class="cimea-note" data-i18n="cimea_otp_text">Watch this short video to see how to add your OTP code.</p>
+          <div class="cimea-video" id="cimeaVideo">
+            <!-- When your video is ready, replace the <span> below with ONE of these:
+                 <video controls preload="metadata"><source src="otp-video.mp4" type="video/mp4"></video>
+                 <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+            <span data-i18n="cimea_video_soon">Video coming soon</span>
+          </div>
+
+          <hr>
+
+          <!-- PDF + SIGNATURE -->
+          <h3 data-i18n="cimea_sign_title">Signed Declaration</h3>
+          <p class="cimea-note" data-i18n="cimea_sign_text">Download the PDF, read it, sign it electronically, then upload the signed copy below.</p>
+          <!-- Put your PDF in the site folder and change the file name here -->
+          <a class="btn btn-primary cimea-download" href="consent form.pdf" download>
+            <i class="fas fa-download"></i> <span data-i18n="cimea_download">Download PDF</span>
+          </a>
+          <div class="form-group" style="margin-top:20px;">
+            <label data-i18n="cimea_signed">Signed PDF *</label>
+            <input type="file" name="signed_pdf" accept=".pdf,application/pdf" required>
+            <p class="cimea-note" data-i18n="cimea_sign_note">Sign with Adobe Acrobat Reader (Fill &amp; Sign) or any PDF app, save the file, then upload it here.</p>
+          </div>
+
+          <hr>
+
+          <h3 data-i18n="cimea_additional">Additional Information</h3>
+          <div class="form-group">
+            <textarea name="notes" rows="5" data-i18n-placeholder="cimea_notes_placeholder"
+              placeholder="Write any additional information here..."></textarea>
+          </div>
+
+          <div class="form-group cimea-consent">
+            <input type="checkbox" id="cimeaConsent" required>
+            <label for="cimeaConsent" data-i18n="cimea_consent">I agree to be contacted about my CIMEA application.</label>
+          </div>
+
+          <button type="submit" id="cimeaSubmit" class="btn btn-primary cimea-submit">
+            <i class="fas fa-paper-plane"></i>
+            <span data-i18n="cimea_submit">Submit CIMEA Application</span>
+          </button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Footer -->
