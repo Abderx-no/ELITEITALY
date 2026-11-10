@@ -47,30 +47,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <!-- Navigation -->
 <nav id="mainNav">
-<div class="nav-container">
-<div class="logo">
+  <div class="nav-container">
+
+    <div class="logo">
       <i class="fas fa-graduation-cap"></i>
       <span>ELITE <span style="color: var(--accent-blue);">ITALY</span></span>
     </div>
-<div class="nav-links" id="navLinks">
-<button onclick="showSection('home')" class="nav-btn active">Home</button>
-<button onclick="showSection('universities')" class="nav-btn">Universities</button>
-<button onclick="showSection('admissions')" class="nav-btn">Admissions</button>
-<button onclick="showSection('ielts')" class="nav-btn">IELTS Prep</button>
-<button onclick="showSection('services')" class="nav-btn">Services</button>
-<button onclick="showSection('pricing')" class="nav-btn">Pricing</button>
-<button onclick="showSection('contact')" class="nav-btn">Apply</button>
-<button onclick="showSection('cimea')" class="nav-btn">CIMEA</button>
-</div>
-<div class="elite-language" id="eliteLanguage">
-<button class="elite-language-btn" id="eliteLanguageBtn" type="button"><span id="eliteFlag">🇬🇧</span><span id="eliteLangText">EN</span><span class="elite-chevron">⌄</span></button>
-<div class="elite-language-menu" id="eliteLanguageMenu">
-<button type="button" onclick="translateElitePage('en')">🇬🇧 English</button>
-<button type="button" onclick="translateElitePage('fr')">🇫🇷 Français</button>
-<button type="button" onclick="translateElitePage('ar')">🇩🇿 العربية</button>
-</div>
-</div>
-</div>
+
+    <div class="nav-links" id="navLinks">
+      <button onclick="showSection('home')" class="nav-btn active">Home</button>
+      <button onclick="showSection('universities')" class="nav-btn">Universities</button>
+      <button onclick="showSection('admissions')" class="nav-btn">Admissions</button>
+      <button onclick="showSection('ielts')" class="nav-btn">IELTS Prep</button>
+      <button onclick="showSection('services')" class="nav-btn">Services</button>
+      <button onclick="showSection('pricing')" class="nav-btn">Pricing</button>
+      <button onclick="showSection('contact')" class="nav-btn">Apply</button>
+      <button onclick="showSection('cimea')" class="nav-btn">CIMEA</button>
+    </div>
+
+    <div class="elite-language" id="eliteLanguage">
+      <button class="elite-language-btn" id="eliteLanguageBtn" type="button"><span id="eliteFlag">🇬🇧</span><span id="eliteLangText">EN</span><span class="elite-chevron">⌄</span></button>
+      <div class="elite-language-menu" id="eliteLanguageMenu">
+        <button type="button" onclick="translateElitePage('en')">🇬🇧 English</button>
+        <button type="button" onclick="translateElitePage('fr')">🇫🇷 Français</button>
+        <button type="button" onclick="translateElitePage('ar')">🇩🇿 العربية</button>
+      </div>
+    </div>
+
+    
+
+<button class="hamburger" id="hamburger" type="button"
+  aria-label="Menu"
+  aria-expanded="false"
+  onclick="toggleMobileMenu()">
+
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+
+  </div>
 </nav>
 
 <!-- Home -->
