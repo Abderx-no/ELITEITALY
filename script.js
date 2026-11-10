@@ -2206,9 +2206,19 @@ function displayResources() {
     `;
     }).join("");
 }
+function closeMobileMenu() {
+    const menu = document.getElementById("navLinks");
+    const burger = document.getElementById("hamburger");
 
+    if (!menu || !burger) return;
+
+    menu.classList.remove("open");
+    burger.classList.remove("open");
+    burger.setAttribute("aria-expanded", "false");
+}
 // Section Navigation
 function showSection(sectionId, addToHistory = true) {
+        closeMobileMenu();
 
     // Remember the current page/section
     localStorage.setItem("eliteItalyCurrentSection", sectionId);
@@ -2943,24 +2953,17 @@ async function submitCimeaForm(event) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const burger = document.getElementById("hamburger");
-    const links = document.getElementById("navLinks");
+    const menu = document.getElementById("navLinks");
 
-    if (!burger || !links) return;
-
-    function closeMenu() {
-        links.classList.remove("open");
-        burger.classList.remove("open");
-        burger.setAttribute("aria-expanded", "false");
-    }
+    if (!burger || !menu) return;
 
     burger.addEventListener("click", function () {
-        const isOpen = links.classList.toggle("open");
-
-        burger.classList.toggle("open", isOpen);
-        burger.setAttribute("aria-expanded", String(isOpen));
-    });
-
-    links.querySelectorAll("a, button").forEach(function (item) {
-        item.addEventListener("click", closeMenu);
+        if (menu.classList.contains("open")) {
+            closeMobileMenu();
+        } else {
+            menu.classList.add("open");
+            burger.classList.add("open");
+            burger.setAttribute("aria-expanded", "true");
+        }
     });
 });
