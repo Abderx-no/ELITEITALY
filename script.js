@@ -2940,3 +2940,20 @@ async function submitCimeaForm(event) {
         button.innerHTML = oldHTML;
     }
 }
+
+(function () {
+  const nav = document.getElementById('mainNav');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', function () {
+    const current = window.pageYOffset;
+
+    if (current > lastScroll && current > 100) {
+      nav.classList.add('nav-hidden');     // scrolling down: hide
+    } else {
+      nav.classList.remove('nav-hidden');  // scrolling up: show
+    }
+
+    lastScroll = current <= 0 ? 0 : current;
+  }, { passive: true });
+})();
