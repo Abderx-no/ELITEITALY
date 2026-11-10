@@ -2629,6 +2629,25 @@ nav#mainNav .hamburger span {
 .hamburger.open span:nth-child(2) {
     opacity: 0;
 }
+@media (max-width: 768px) {
+    .nav-links {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.open {
+        display: flex !important;
+    }
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
 
 .hamburger.open span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
