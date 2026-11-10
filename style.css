@@ -2471,3 +2471,13 @@ a.cimea-download {
     text-decoration: none;
     text-align: center;
 }
+#mainNav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+#mainNav.nav-hidden {
+  transform: translateY(-100%);
+}
