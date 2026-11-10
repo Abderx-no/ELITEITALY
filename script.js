@@ -2941,56 +2941,26 @@ async function submitCimeaForm(event) {
     }
 }
 
-// ===== MENU: three lines + hide on scroll =====
-(function () {
-  const nav = document.getElementById('mainNav');
-  const burger = document.getElementById('hamburger');
-  const links = document.getElementById('navLinks');
+document.addEventListener("DOMContentLoaded", function () {
+    const burger = document.getElementById("hamburger");
+    const links = document.getElementById("navLinks");
 
-  if (!nav || !burger || !links) return;
+    if (!burger || !links) return;
 
-  function setMenu(open) {
-    links.classList.toggle('open', open);
-    burger.classList.toggle('open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  burger.addEventListener('click', function () {
-    setMenu(!links.classList.contains('open'));
-  });
-
-  // Close the menu after choosing a page
-  links.querySelectorAll('button').forEach(function (btn) {
-    btn.addEventListener('click', function () { setMenu(false); });
-  });
-
-  // Hide when scrolling down, show when scrolling up
-  let lastScroll = 0;
-  window.addEventListener('scroll', function () {
-    const current = window.pageYOffset;
-
-    if (current > lastScroll && current > 100 && !links.classList.contains('open')) {
-      nav.classList.add('nav-hidden');
-    } else {
-      nav.classList.remove('nav-hidden');
+    function closeMenu() {
+        links.classList.remove("open");
+        burger.classList.remove("open");
+        burger.setAttribute("aria-expanded", "false");
     }
 
-    lastScroll = current <= 0 ? 0 : current;
-  }, { passive: true });
-})();
+    burger.addEventListener("click", function () {
+        const isOpen = links.classList.toggle("open");
 
+        burger.classList.toggle("open", isOpen);
+        burger.setAttribute("aria-expanded", String(isOpen));
+    });
 
-function toggleMobileMenu() {
-    const menu = document.getElementById("navLinks");
-    const button = document.getElementById("hamburger");
-
-    if (!menu || !button) return;
-
-    const isOpen = menu.style.display === "flex";
-
-    menu.style.display = isOpen ? "none" : "flex";
-    menu.style.flexDirection = "column";
-    menu.style.width = "100%";
-
-    button.setAttribute("aria-expanded", String(!isOpen));
-}
+    links.querySelectorAll("a, button").forEach(function (item) {
+        item.addEventListener("click", closeMenu);
+    });
+});
